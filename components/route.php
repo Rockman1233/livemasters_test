@@ -72,7 +72,6 @@ class Route
 
                 //connect files
                 $controllerFile = $_SERVER['DOCUMENT_ROOT'].'/controllers/'.$controllerName.'.php';
-                echo '<br> Файл контроллера - '.$controllerFile;
                 if(file_exists($controllerFile))
                 {
                     include_once $controllerFile;

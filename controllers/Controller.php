@@ -7,17 +7,27 @@
  */
 
 
-class Controller {
-    public $view;
+abstract class Controller {
 
-    function __construct($template='template.php')
+    public $loader;
+    static $twig;
+
+
+    function __construct()
 
     {
-        //$this->view = new View($template);
+        $this->loader = new Twig_Loader_Filesystem('views');
+        //$twig = new Twig_Environment($loader, array('cache' => 'cache'));
+        self::$twig = new Twig_Environment($this->loader);
     }
 
     public function actionIndex() {
 
+    }
+
+    public function niceLook($obj){
+        echo '<pre>';
+        print_r($obj);
     }
 
 

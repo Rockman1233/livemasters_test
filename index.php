@@ -7,5 +7,7 @@ session_start(); //для авторизашки
 
 include('components/route.php');
 
+
 $router = new Route();
 $router->start();
+

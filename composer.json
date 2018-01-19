@@ -1,7 +1,9 @@
 {
     "name": "sergejandrejkin/livemasters",
     "require": {
-        "twig/twig": "^1.4"
+        "twig/twig": "^1.4",
+        "twbs/bootstrap": "^4.0",
+        "components/jquery": "^3.2"
     },
     "authors": [
         {

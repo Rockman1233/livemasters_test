@@ -7,21 +7,25 @@
  */
 
 include_once('Controller.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/models/Project.php');
+
+
+
 
 class MainController extends Controller {
 
-    public $var = 123;
 
     public function actionIndex()
     {
-        $loader = new Twig_Loader_Filesystem('views');
-        //$twig = new Twig_Environment($loader, array('cache' => 'cache'));
-        $twig = new Twig_Environment($loader);
 
-        $template = $twig->loadTemplate('index.php');
-        $title = 'Это новый тайтл';
+        $template = self::$twig->loadTemplate('index.php');
+        $title = 'CRUD интерфейс';
+        $projects = Project::showAll();
+
+
         echo $template->render(array(
-            'title' => $title
+            'title' => $title,
+            'projects' => $projects
         ));
     }
 
