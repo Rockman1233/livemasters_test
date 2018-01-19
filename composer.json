@@ -1,0 +1,12 @@
+{
+    "name": "sergejandrejkin/livemasters",
+    "require": {
+        "twig/twig": "^1.4"
+    },
+    "authors": [
+        {
+            "name": "Rockman1233",
+            "email": "rocki67@me.com"
+        }
+    ]
+}
