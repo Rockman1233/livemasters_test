@@ -53,9 +53,29 @@
     {% endif %}
 </div>
 
+<!----- SCRIPTS -------->
+
+<!-- ajax (delete row)-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.btn-danger').click(function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: '../main/deleteline',
+                type: 'POST',
+                data: {'delete_line_with_id': id},
+                success: function (result) {
+                    alert("Задание удалено");
+                }
+            });
+
+        })
+    })
+</script>
+
 <script>
     $(function () {
-        $('#datetimepicker1').datepicker({
+        $('.datetimepicker1').datepicker({
             locale: 'ru',
             format: 'yyyy-mm-dd',
             autoclose: true
@@ -65,7 +85,7 @@
 </script>
 <script>
     $(function () {
-        $('#datetimepicker2').datepicker({
+        $('.datetimepicker2').datepicker({
             locale: 'ru',
             format: 'yyyy-mm-dd',
             autoclose: true

@@ -10,4 +10,5 @@ return array(
 
     'projects' => 'main/index',
     'edit' => 'main/edit',
+    'main/deleteline' => 'main/deleteline'
 );

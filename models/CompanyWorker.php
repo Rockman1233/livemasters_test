@@ -42,12 +42,6 @@ class CompanyWorker extends Object {
 
     static function showAll()
         {
-            //pagination (turn-off)
-            /*
-            $page = intval($page);
-            $count = worker::SHOW_DEFAULT;
-            $offset = $count * ($page - 1);
-            */
             $oQuery = Object::$db->query('SELECT * FROM `exam_workers`');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
         }

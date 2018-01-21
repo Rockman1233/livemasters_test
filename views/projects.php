@@ -13,56 +13,62 @@
     <tbody>
     {% for project in projects %}
     <form action="" method="post">
-    <input type="hidden" value="{{ project.ep_id }}" name="id">
+    <input type="hidden" value="{{ project.ep_id }}" name="ep_id">
+
     <tr>
+        <!-- Projects -->
         <td>{{ project.ep_id }}</td>
         <td>
             <div class="form-group">
-                <select class="form-control" name="prj_name" >
+                <select class="form-control" name="project_id">
+                        <option value="{{ project.project_id }}" selected hidden>{{ project.project_name }}</option>
                     {% for projectName in namesOfProjects %}
-                    <option selected hidden>{{ project.project_name }}</option>
-                    <option>{{ projectName.project_name }}</option>
+                        <option value="{{ projectName.project_id }}">{{ projectName.project_name }}</option>
                     {% endfor %}
                 </select>
             </div>
         </td>
+        <!-- Workers -->
         <td>
             <div class="form-group">
-                <select class="form-control" name="worker_name">
+                <select class="form-control" name="worker_id">
+                    <option value="{{ project.worker_id }}" selected hidden>{{ project.worker_lastname }}</option>
                     {% for worker in workers %}
-                    <option selected hidden>{{ project.worker_lastname }}</option>
-                    <option>{{ worker.worker_lastname }}</option>
+                        <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>
                     {% endfor %}
                 </select>
             </div>
         </td>
+        <!-- Roles -->
         <td>
             <div class="form-group">
-                <select class="form-control" name="role">
+                <select class="form-control" name="role_id">
+                    <option value="{{ project.role_id }}" selected hidden>{{ project.role_name }}</option>
                     {% for role in roles %}
-                    <option selected hidden>{{ project.role_name }}</option>
-                    <option>{{ role.role_name }}</option>
+                        <option value="{{ role.role_id }}">{{ role.role_name }}</option>
                     {% endfor %}
                 </select>
             </div>
         </td>
+        <!-- dt_begin -->
         <td>
-            <div class="input-group date" data-provide="datepicker" id="datetimepicker1">
+            <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
                 <input type="text" class="form-control" name="dt_begin" value="{{ project.dt_begin }}">
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </div>
             </div>
         </td>
+        <!-- dt_end -->
         <td>
-            <div class="input-group date" data-provide="datepicker" id="datetimepicker2">
+            <div class="input-group date datetimepicker2" data-provide="datepicker" id="datetimepicker2">
                 <input type="text" class="form-control" name="dt_end" value="{{ project.dt_end }}">
                 <div class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </div>
             </div>
         </td>
-        <td><button type="submit" class="btn btn-primary">Confirm</button> <button  id="delete" class="btn btn-danger">Delete</button></td>
+        <td><button type="submit" class="btn btn-primary">Confirm</button> <button data-id="{{ project.ep_id }}" class="btn btn-danger">Delete</button></td>
     </tr>
     </form>
     {% endfor %}

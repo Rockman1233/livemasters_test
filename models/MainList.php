@@ -55,7 +55,11 @@ class MainList extends Object {
             $count = MainList::SHOW_DEFAULT;
             $offset = $count * ($page - 1);
             */
-            $oQuery = Object::$db->query('SELECT exam_workers.worker_lastname, exam_projects.project_name, exam_roles.role_name, exam_projects_workers.dt_begin, exam_projects_workers.dt_end, exam_projects_workers.ep_id
+            $oQuery = Object::$db->query('SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
+                                                           exam_projects.project_name, exam_projects.project_id, 
+                                                           exam_roles.role_name, exam_roles.role_id, 
+                                                           exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
+                                                           exam_projects_workers.ep_id
                                                     FROM `exam_projects_workers` 
                                                     JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
                                                     JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
@@ -81,11 +85,11 @@ class MainList extends Object {
             ));
     }
 
-    public function delete($id) {
+    static function delete($id) {
         $prepare = self::$db->prepare(
             'DELETE FROM exam_projects_workers 
-                       WHERE ep_id  ='.$id);
-        $prepare->execute();
+                       WHERE ep_id  = :ep_id');
+        $prepare->execute(array('ep_id' => $id));
 
     }
 

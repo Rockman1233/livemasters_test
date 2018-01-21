@@ -26,21 +26,28 @@ class MainController extends Controller {
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
-        $marker = 0;
         echo self::$template->render(array(
             'title' => $title,
             'projects' => $projects,
             'workers' => $workers,
             'roles' => $roles,
-            'marker' => $marker,
             'namesOfProjects' => $namesOfProjects
         ));
         if($_POST){
-            $mainListModel = MainList::findById($_POST['id']);
-            $this->niceLook($_POST);
+            $ChangingListModel = MainList::findById($_POST['ep_id']);
+            $className = 'MainList';
+            //set POsT parametrs to model
+            foreach ($_POST as $param_name => $param_value){
+                if (property_exists($className, $param_name )&&(isset($param_name)))
+                    $ChangingListModel->$param_name = $param_value;
+            }
+            $ChangingListModel->saveChanges();
+            Object::redirect('./projects');
         }
 
     }
+
+
 
     public function actionEdit()
     {
@@ -48,14 +55,16 @@ class MainController extends Controller {
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
-        $marker = 1;
         echo self::$template->render(array(
             'title' => $title,
             'workers' => $workers,
             'roles' => $roles,
-            'marker' => $marker,
             'namesOfProjects' => $namesOfProjects
         ));
+    }
+
+    public function actionDeleteline(){
+        MainList::delete($_POST['delete_line_with_id']);
     }
 
 

@@ -17,7 +17,6 @@ abstract class Controller {
     function __construct()
 
     {
-
         $this->loader = new Twig_Loader_Filesystem('views');
         //$twig = new Twig_Environment($loader, array('cache' => 'cache'));
         $this->twig = new Twig_Environment($this->loader);
