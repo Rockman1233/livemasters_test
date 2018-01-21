@@ -82,7 +82,6 @@ class Route
                 //create new object
                 $classObject = new $controllerName();
                 $result = call_user_func_array(array($classObject, $actionName), $parametrs);
-                print_r($classObject);
 
                 if($result != NULL){
                     break;

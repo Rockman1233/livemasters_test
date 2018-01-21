@@ -15,7 +15,7 @@ class Project extends Object {
 
     static function TableName()
     {
-        return 'Project';
+        return 'exam_projects';
     }
 
 
@@ -54,19 +54,30 @@ class Project extends Object {
 
         $prepare = self::$db->prepare(
             'UPDATE exam_projects SET
-                        status  ='.$this->status.'
+                        name  ='.$this->project_name.'
                         WHERE
-                        contract_id='.$this->project_id);
+                        project_id='.$this->project_id);
 
         $prepare->execute();
 
+    }
+
+    public static function findById($id){
+
+        /** @var Object $class */
+        $class = get_called_class();
+
+        $oQuery = Object::$db->prepare("SELECT * FROM exam_projects WHERE project_id=:need_id");
+        $oQuery->execute(['need_id' => $id]);
+        $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
+        return $aRes? new $class($aRes):null;
     }
 
     public function delete($id) {
 
         $prepare = self::$db->prepare(
             'DELETE FROM exam_projects WHERE project_id  ='.$id);
-        $prepare->execute();
+        return $prepare->execute();
 
     }
 

@@ -8,6 +8,6 @@
 
 return array(
 
-    'main' => 'main/index',
-    '' => '',
+    'projects' => 'main/index',
+    'edit' => 'main/edit',
 );
