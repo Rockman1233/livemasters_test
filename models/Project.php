@@ -9,7 +9,7 @@ include_once 'ClassesExt.php';
 
 class Project extends Object {
 
-    public $projecct_id;
+    public $project_id;
     public $project_name;
 
 
@@ -21,16 +21,12 @@ class Project extends Object {
 
     public function saveProject()
     {
-        echo '<pre>';
-        echo $this->projecct_id;
-        echo '</pre>';
         $prepare = self::$db->prepare(
             'INSERT INTO exam_projects 
                         (project_name 
                         ) 
                         VALUES 
                         (:name)');
-
 
         $prepare->execute(
             array('name' => $this->project_name
@@ -54,11 +50,11 @@ class Project extends Object {
 
         $prepare = self::$db->prepare(
             'UPDATE exam_projects SET
-                        name  ='.$this->project_name.'
+                        project_name =:name
                         WHERE
-                        project_id='.$this->project_id);
+                        project_id =:id');
 
-        $prepare->execute();
+        $prepare->execute(array('name' => $this->project_name, 'id' => $this->project_id));
 
     }
 
@@ -73,11 +69,11 @@ class Project extends Object {
         return $aRes? new $class($aRes):null;
     }
 
-    public function delete($id) {
+    static function delete($id) {
 
         $prepare = self::$db->prepare(
-            'DELETE FROM exam_projects WHERE project_id  ='.$id);
-        return $prepare->execute();
+            'DELETE FROM exam_projects WHERE project_id  = :id');
+        return $prepare->execute(array('id' => $id));
 
     }
 

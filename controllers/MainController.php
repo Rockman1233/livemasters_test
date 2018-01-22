@@ -38,10 +38,11 @@ class MainController extends Controller {
         if($_POST){
             $ChangingListModel = MainList::findById($_POST['ep_id']);
             $className = 'MainList';
-            //set POsT parametrs to model
+            //set POsT parameters to model
             foreach ($_POST as $param_name => $param_value){
                 if (property_exists($className, $param_name )&&(isset($param_name)))
                     $ChangingListModel->$param_name = $param_value;
+
             }
             $ChangingListModel->saveChanges();
             Object::redirect('./projects');

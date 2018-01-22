@@ -69,7 +69,7 @@ class CompanyWorker extends Object {
         return $aRes? new $class($aRes):null;
     }
 
-    public function delete($id) {
+    static function delete($id) {
 
         $prepare = self::$db->prepare(
             'DELETE FROM exam_workers WHERE worker_id  ='.$id);

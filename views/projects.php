@@ -12,7 +12,7 @@
     </thead>
     <tbody>
     {% for project in projects %}
-    <form action="" method="post">
+    <form action="projects" method="post">
     <input type="hidden" value="{{ project.ep_id }}" name="ep_id">
 
     <tr>

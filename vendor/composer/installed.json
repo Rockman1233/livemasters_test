@@ -1,5 +1,599 @@
 [
     {
+        "name": "bower-asset/fa-awesome",
+        "version": "2.0.2",
+        "version_normalized": "2.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pkaske/fa-awesome.git",
+            "reference": "ca143a95fed7a734fbd33b7f82e02ae1eeea5af3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pkaske/fa-awesome/zipball/ca143a95fed7a734fbd33b7f82e02ae1eeea5af3",
+            "reference": "ca143a95fed7a734fbd33b7f82e02ae1eeea5af3",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/iron-flex-layout": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-icon": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-iconset-svg": ">=1.0.0,<2.0.0",
+            "bower-asset/neon-animation": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer-font-awesome-icons": ">=4.0.0,<5.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0"
+        },
+        "time": "2015-12-20T15:18:33+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "fa-awesome.html"
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "description": "Polymer element that shows icons of font-awesome. Build with Polymer 0.9.",
+        "keywords": [
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-flex-layout",
+        "version": "v1.3.7",
+        "version_normalized": "1.3.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-flex-layout.git",
+            "reference": "2a9c084c933e87469824b69f3faadfcba12efbcd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-flex-layout/zipball/2a9c084c933e87469824b69f3faadfcba12efbcd",
+            "reference": "2a9c084c933e87469824b69f3faadfcba12efbcd",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/polymer": ">=1.1.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-demo-helpers": ">=1.0.0,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-19T18:00:35+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "iron-flex-layout.html",
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "Provide flexbox-based layouts",
+        "keywords": [
+            "layout",
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-icon",
+        "version": "v1.0.13",
+        "version_normalized": "1.0.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-icon.git",
+            "reference": "4ea0cab59cb2bdfd537e72c9cfbd4af099acb5c9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-icon/zipball/4ea0cab59cb2bdfd537e72c9cfbd4af099acb5c9",
+            "reference": "4ea0cab59cb2bdfd537e72c9cfbd4af099acb5c9",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/iron-flex-layout": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-meta": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer": ">=1.1.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-icons": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-iconset": ">=1.0.0,<2.0.0",
+            "bower-asset/promise-polyfill": ">=1.0.0,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-19T18:59:39+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "iron-icon.html",
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "An element that supports displaying an icon",
+        "keywords": [
+            "icon",
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-icons",
+        "version": "v1.2.1",
+        "version_normalized": "1.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-icons.git",
+            "reference": "25b360efd0e751390e1916f012b8e769de0a1353"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-icons/zipball/25b360efd0e751390e1916f012b8e769de0a1353",
+            "reference": "25b360efd0e751390e1916f012b8e769de0a1353",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/iron-icon": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-iconset-svg": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer": ">=1.0.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": "1.0.0",
+            "bower-asset/iron-flex-layout": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-meta": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-styles": ">=1.0.2,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-19T19:08:01+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "iron-icons.html",
+            "bower-asset-ignore": [
+                "util",
+                "update-icons.sh"
+            ],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "A set of icons for use with iron-icon",
+        "keywords": [
+            "icon",
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-iconset-svg",
+        "version": "v1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-iconset-svg.git",
+            "reference": "9647bdd1d15ad63b6cbe44cd128e43192bfe94c8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-iconset-svg/zipball/9647bdd1d15ad63b6cbe44cd128e43192bfe94c8",
+            "reference": "9647bdd1d15ad63b6cbe44cd128e43192bfe94c8",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/iron-meta": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer": ">=1.0.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-icon": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-styles": ">=1.0.2,<2.0.0",
+            "bower-asset/promise-polyfill": ">=1.0.0,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-07-21T18:49:40+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "iron-iconset-svg.html",
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "Manages a set of svg icons",
+        "keywords": [
+            "icon",
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-meta",
+        "version": "v1.1.3",
+        "version_normalized": "1.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-meta.git",
+            "reference": "ec0afd727a0af36509264a78b691484123dc7bf6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-meta/zipball/ec0afd727a0af36509264a78b691484123dc7bf6",
+            "reference": "ec0afd727a0af36509264a78b691484123dc7bf6",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/polymer": ">=1.0.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-styles": ">=1.0.4,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-18T03:42:41+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "iron-meta.html",
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "Useful for sharing information across a DOM tree",
+        "keywords": [
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-resizable-behavior",
+        "version": "v1.0.6",
+        "version_normalized": "1.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-resizable-behavior.git",
+            "reference": "13969b17cc06675e5887f6957b202cda7bfb9524"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-resizable-behavior/zipball/13969b17cc06675e5887f6957b202cda7bfb9524",
+            "reference": "13969b17cc06675e5887f6957b202cda7bfb9524",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/polymer": ">=1.1.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-17T23:20:50+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "iron-resizable-behavior.html",
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "Coordinates the flow of resizeable elements",
+        "keywords": [
+            "behavior",
+            "iron",
+            "polymer",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/iron-selector",
+        "version": "v1.5.3",
+        "version_normalized": "1.5.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/iron-selector.git",
+            "reference": "6486761a670829e2c34625abed0b773b6d9230d6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/iron-selector/zipball/6486761a670829e2c34625abed0b773b6d9230d6",
+            "reference": "6486761a670829e2c34625abed0b773b6d9230d6",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/polymer": ">=1.2.0,<2.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-test-helpers": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-styles": ">=1.0.4,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-19T20:58:48+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "iron-selector.html",
+                "iron-multi-selectable.html",
+                "iron-selectable.html",
+                "iron-selection.html"
+            ],
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "Manages a set of elements that can be selected",
+        "keywords": [
+            "polymer",
+            "selector",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/neon-animation",
+        "version": "v1.2.5",
+        "version_normalized": "1.2.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PolymerElements/neon-animation.git",
+            "reference": "9af00bc65118e0806cdfa5a5e1ea5fb155147016"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PolymerElements/neon-animation/zipball/9af00bc65118e0806cdfa5a5e1ea5fb155147016",
+            "reference": "9af00bc65118e0806cdfa5a5e1ea5fb155147016",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/iron-meta": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-resizable-behavior": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-selector": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer": ">=1.1.0,<2.0.0",
+            "bower-asset/web-animations-js": ">=2.2.0,<3.0.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-flex-layout": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-icon": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-icons": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-icon-button": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-item": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-styles": ">=1.0.0,<2.0.0",
+            "bower-asset/paper-toolbar": ">=1.0.0,<2.0.0",
+            "bower-asset/test-fixture": ">=1.0.0,<2.0.0",
+            "bower-asset/web-component-tester": ">=4.0.0,<5.0.0",
+            "bower-asset/webcomponentsjs": ">=0.7.0,<0.8.0"
+        },
+        "time": "2017-04-18T23:51:43+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "neon-animated-pages.html",
+                "neon-animatable-behavior.html",
+                "neon-animation-behavior.html",
+                "neon-animation-runner-behavior.html",
+                "neon-shared-element-animatable-behavior.html",
+                "neon-shared-element-animation-behavior.html",
+                "neon-animatable.html",
+                "neon-animations.html"
+            ],
+            "bower-asset-ignore": [],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ],
+        "description": "A system for animating Polymer-based web components",
+        "keywords": [
+            "polymer",
+            "web-animations",
+            "web-component",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/polymer",
+        "version": "v1.11.2",
+        "version_normalized": "1.11.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Polymer/polymer.git",
+            "reference": "1dcf3839b3ce058d2d87737674a25ecdd7343f9a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Polymer/polymer/zipball/1dcf3839b3ce058d2d87737674a25ecdd7343f9a",
+            "reference": "1dcf3839b3ce058d2d87737674a25ecdd7343f9a",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/webcomponentsjs": ">=0.7.24,<0.8.0"
+        },
+        "require-dev": {
+            "bower-asset/iron-component-page": ">=1.1.6,<2.0.0",
+            "bower-asset/web-component-tester": "*"
+        },
+        "time": "2017-12-15T01:21:39+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "polymer.html",
+                "polymer-mini.html",
+                "polymer-micro.html"
+            ],
+            "bower-asset-ignore": [
+                "/.*",
+                "/test/",
+                "/util/",
+                "/explainer/",
+                "gulpfile.js",
+                "PRIMER.md",
+                "CONTRIBUTING.md",
+                "CHANGELOG.md"
+            ],
+            "bower-asset-private": true
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://polymer.github.io/LICENSE.txt"
+        ]
+    },
+    {
+        "name": "bower-asset/polymer-font-awesome-icons",
+        "version": "v4.4.0",
+        "version_normalized": "4.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pkaske/font-awesome-polymer-icons.git",
+            "reference": "c80cfc8a67cfabdc0180689bba8aad5e6afe4bff"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pkaske/font-awesome-polymer-icons/zipball/c80cfc8a67cfabdc0180689bba8aad5e6afe4bff",
+            "reference": "c80cfc8a67cfabdc0180689bba8aad5e6afe4bff",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/iron-icon": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-icons": ">=1.0.0,<2.0.0",
+            "bower-asset/iron-iconset-svg": ">=1.0.0,<2.0.0",
+            "bower-asset/polymer": ">=1.0.0,<2.0.0"
+        },
+        "time": "2015-08-11T11:50:46+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "fa-all.html",
+            "bower-asset-ignore": [
+                "**/.*",
+                "bower_components",
+                "package.json",
+                "update.js"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "description": "Polymer/core-icon compatible iconset based on Font Awesome SVG font",
+        "keywords": [
+            "Font Awesome",
+            "Icon Set",
+            "Icons",
+            "Polymer",
+            "web-component",
+            "web-components"
+        ]
+    },
+    {
+        "name": "bower-asset/web-animations-js",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/web-animations/web-animations-js.git",
+            "reference": "a2dddad1c210c8abe5bc1c5a5e126e9946d44252"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/web-animations/web-animations-js/zipball/a2dddad1c210c8abe5bc1c5a5e126e9946d44252",
+            "reference": "a2dddad1c210c8abe5bc1c5a5e126e9946d44252",
+            "shasum": ""
+        },
+        "time": "2017-07-20T07:56:24+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "web-animations.min.js",
+            "bower-asset-ignore": [
+                "**/.*",
+                "node_modules",
+                "templates",
+                "test",
+                "Gruntfile.js",
+                "package.json",
+                "target-config.js",
+                "target-loader.js",
+                "web-animations.dev.html",
+                "web-animations.dev.js",
+                "web-animations-next.dev.html",
+                "web-animations-next.dev.js",
+                "web-animations-next-lite.dev.html",
+                "web-animations-next-lite.dev.js"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "JavaScript implementation of the Web Animations API",
+        "keywords": [
+            "animations",
+            "polyfill"
+        ]
+    },
+    {
+        "name": "bower-asset/webcomponentsjs",
+        "version": "v0.7.24",
+        "version_normalized": "0.7.24.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/webcomponents/webcomponentsjs.git",
+            "reference": "8a2e40557b177e2cca0def2553f84c8269c8f93e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/webcomponents/webcomponentsjs/zipball/8a2e40557b177e2cca0def2553f84c8269c8f93e",
+            "reference": "8a2e40557b177e2cca0def2553f84c8269c8f93e",
+            "shasum": ""
+        },
+        "require-dev": {
+            "bower-asset/web-component-tester": ">=4.0.1,<5.0.0"
+        },
+        "time": "2017-02-06T23:35:26+00:00",
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "webcomponents.js",
+            "bower-asset-ignore": []
+        },
+        "installation-source": "dist",
+        "license": [
+            "BSD"
+        ],
+        "keywords": [
+            "webcomponents"
+        ]
+    },
+    {
         "name": "components/jquery",
         "version": "3.2.1",
         "version_normalized": "3.2.1.0",

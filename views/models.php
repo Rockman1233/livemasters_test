@@ -1,65 +1,86 @@
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Project Name</th>
-        <th scope="col">Delete?</th>
-    </thead>
-    <tbody>
-    {% for projectName in namesOfProjects %}
-        <form action="" method="post">
-            <tr>
-                <td>{{ projectName.project_id }}</td>
-                <td>
-                    <button class="show-hide-field" id="{{ projectName.project_id }}">{{ projectName.project_name }}</button>
-                    <input type="text" id="input_{{ projectName.project_id }}" class='input_new_name' placeholder="{{ projectName.project_name }}" >
-                </td>
-                <td>
-                    <button  id="delete" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-        </form>
-    {% endfor %}
-    </tbody>
-</table>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Worker Name</th>
-    </thead>
-    <tbody>
-    {% for worker in workers %}
-    <form action="" method="post">
-        <input type="hidden" value="{{ worker.worker_id }}" name="id">
-        <tr>
-            <td>{{ worker.worker_id }}</td>
-            <td><input type="text" placeholder="{{ worker.worker_lastname }}"></td>
-            <td><button  id="delete" class="btn btn-danger">Delete</button></td>
-        </tr>
+<!--
+<div class="container">
+    <form method="post" class="newName" action="javascript:void(null);" onsubmit="editName()">
+        <div class="form-group">
+            <select class="form-control" name="project_id">
+                <option value="0" selected hidden>List of projects</option>
+                {% for projectName in namesOfProjects %}
+                <option value="{{ projectName.project_id }}">{{ projectName.project_name }}</option>
+                {% endfor %}
+            </select>
+            <p>Введите новое название для проекта</p>
+            <input type="text" name="project_name">
+            <p>Удалить?<input type="checkbox" name="delete"></p>
+            <input type="submit" hidden>
+        </div>
     </form>
-    {% endfor %}
-    </tbody>
-</table>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Role Name</th>
-    </thead>
-    <tbody>
-    {% for role in roles %}
-    <form action="" method="post">
-        <input type="hidden" value="{{ role.role_id }}" name="id">
-        <tr>
-            <td>{{ role.role_id }}</td>
-            <td><input type="text" placeholder="{{ role.role_name }}"></td>
-            <td><button  id="delete" class="btn btn-danger">Delete</button></td>
-        </tr>
-    </form>
-    {% endfor %}
-    </tbody>
-</table>
+</div>
+-->
+
+<div class="index-content">
+    <div class="container">
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="http://cevirdikce.com/proje/hasem-2/images/finance-1.jpg">
+                    <h4>Список проектов</h4>
+                    <form method="post" class="newName" action="javascript:void(null);" onsubmit="editName()">
+                        <div class="form-group special-padding">
+                            <select class="form-control" name="project_id">
+                                <option value="0" selected hidden>List of projects</option>
+                                {% for projectName in namesOfProjects %}
+                                <option value="{{ projectName.project_id }}">{{ projectName.project_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <p class="text-center">Введите новое название для проекта</p>
+                            <input type="text" name="project_name" class="center-block">
+                            <p class="text-center">Удалить?<input type="checkbox" name="delete" class="form-check-input"></p>
+                            <input type="submit" hidden>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="http://cevirdikce.com/proje/hasem-2/images/finance-3.jpg">
+                    <h4>Список сотрудников</h4>
+                    <form method="post" class="newWorker" action="javascript:void(null);" onsubmit="editWorker()">
+                        <div class="form-group special-padding">
+                            <select class="form-control" name="project_id">
+                                <option value="0" selected hidden>List of workers</option>
+                                {% for worker in workers %}
+                                <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>
+                                {% endfor %}
+                            </select>
+                            <p class="text-center">Введите новое название для проекта</p>
+                            <input type="text" name="worker_lastname" class="center-block">
+                            <p class="text-center">Удалить?<input type="checkbox" name="delete" class="form-check-input"></p>
+                            <input type="submit" hidden>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="http://cevirdikce.com/proje/hasem-2/images/finance-2.jpg">
+                    <h4>Список ролей</h4>
+                    <form method="post" class="newRole" action="javascript:void(null);" onsubmit="editRole()">
+                        <div class="form-group special-padding">
+                            <select class="form-control" name="role_id">
+                                <option value="0" selected hidden>List of roles</option>
+                                {% for role in roles %}
+                                <option value="{{ role.role_id }}">{{ role.role_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <p class="text-center">Введите новое название для проекта</p>
+                            <input type="text" name="role_name" class="center-block">
+                            <p class="text-center">Удалить?<input type="checkbox" name="delete3" class="form-check-input"></p>
+                            <input type="submit" hidden>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
 
 
 

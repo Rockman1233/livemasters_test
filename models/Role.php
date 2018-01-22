@@ -19,11 +19,8 @@ class Role extends Object {
     }
 
 
-    public function saverole()
+    public function saveRole()
     {
-        echo '<pre>';
-        echo $this->projecct_id;
-        echo '</pre>';
         $prepare = self::$db->prepare(
             'INSERT INTO exam_roles 
                         (role_name 
@@ -40,12 +37,6 @@ class Role extends Object {
 
     static function showAll()
         {
-            //pagination (turn-off)
-            /*
-            $page = intval($page);
-            $count = role::SHOW_DEFAULT;
-            $offset = $count * ($page - 1);
-            */
             $oQuery = Object::$db->query('SELECT * FROM `exam_roles`');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -54,11 +45,11 @@ class Role extends Object {
 
         $prepare = self::$db->prepare(
             'UPDATE exam_roles SET
-                        name  ='.$this->role_name.'
+                        role_name =:name
                         WHERE
-                        contract_id='.$this->role_id);
+                        role_id =:id');
 
-        $prepare->execute();
+        $prepare->execute(array('name' => $this->role_name, 'id' => $this->role_id));
 
     }
 
@@ -66,19 +57,18 @@ class Role extends Object {
 
         /** @var Object $class */
         $class = get_called_class();
-
         $oQuery = Object::$db->prepare("SELECT * FROM exam_roles WHERE role_id=:need_id");
         $oQuery->execute(['need_id' => $id]);
         $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
         return $aRes? new $class($aRes):null;
     }
 
-    public function delete($id) {
-
+    static function delete($id) {
         $prepare = self::$db->prepare(
-            'DELETE FROM exam_roles WHERE role_id  ='.$id);
-        return $prepare->execute();
+            'DELETE FROM exam_roles WHERE role_id  = :id');
+        return $prepare->execute(array('id' => $id));
 
     }
+
 
 }

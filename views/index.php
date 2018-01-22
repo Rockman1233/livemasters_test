@@ -34,7 +34,7 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<h1>Привет из шаблона</h1>
+<h1></h1>
 
 <div class="container">
     {% if title == "CRUD интерфейс управления проектами" %}
@@ -77,15 +77,63 @@
                 window.location.reload();
             },
             error:  function(){
-                alert('Возникла ошибка: ';
+                alert('Возникла ошибка');
             }
         });
     }
 
 </script>
 
+<!-- ajax (confirm edit)-->
+
+<script type="text/javascript" language="javascript">
+    function editName() {
+        var msg   = $('.newName').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '../projname',
+            data: msg,
+            success: function() {
+                window.location.reload();
+            }
+
+        });
+    }
+</script>
+
+<script type="text/javascript" language="javascript">
+    function editWorker() {
+        var msg   = $('.newWorker').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '../rolename',
+            data: msg,
+            success: function() {
+                window.location.reload();
+            }
+
+        });
+    }
+</script>
+
+<script type="text/javascript" language="javascript">
+    function editRole() {
+        var msg   = $('.newRole').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '../rolename',
+            data: msg,
+            success: function() {
+                window.location.reload();
+            }
+
+        });
+    }
+</script>
 
 
+
+<!-- datepickers -->
 <script>
     $(function () {
         $('.datetimepicker1').datepicker({
@@ -107,11 +155,12 @@
     });
 </script>
 
+<!-- toggle input -->
 <script>
     $(document).ready(function() {
-        $('button').click(function(e) {
+        $('.toggle_button').click(function(e) {
             e.preventDefault();
-            $(this).next(".input_new_name").toggle(1000);
+            $(this).next(".input_new_name").toggle(500);
         })
     });
 </script>
