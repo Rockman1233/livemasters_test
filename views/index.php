@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/bootstrap-datepicker-1/css/bootstrap-datepicker.min.css rel="stylesheet">
+    <link href="../assets/bootstrap-datepicker-1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="../assets/site.css" rel="stylesheet">
     <script src="../vendor/components/jquery/jquery.min.js"></script>
     <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js"></script>
@@ -30,15 +31,6 @@
                 <li class="{% if title == "CRUD интерфейс управления проектами" %}active{% endif %}"><a href="../projects">Список проектов и задействованных сотрудников</a></li>
                 <li class="{% if title == "Управление моделями" %}active{% endif %}"><a href="../edit">Основные модели</a></li>
             </ul>
-            <!--
-            <ul class="nav navbar-nav">
-                <li <?php if($_SERVER['REQUEST_URI']=='/car') echo "class=\"active\""?>><a href="/car" >Автомобили</a></li>
-                <li <?php if($_SERVER['REQUEST_URI']=='/user') echo "class=\"active\""?>><a href="/user">Войти</a></li>
-                <?php if(isset($_SESSION['user'])): ?>
-                    <li <?php if($_SERVER['REQUEST_URI']=='/cabinet') echo "class=\"active\""?>><a href="/cabinet"><?php if($_SESSION['user'] >= 10000): ?>Личный кабинет арендодателя<? else: ?>Личный кабинет водителя<?php endif; ?></a></li>
-                <?php endif; ?>
-            </ul>
-            -->
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
@@ -73,6 +65,27 @@
     })
 </script>
 
+<!-- ajax (new row)-->
+<script type="text/javascript" language="javascript">
+    function call() {
+        var msg   = $('#formx').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '../main/addnew',
+            data: msg,
+            success: function() {
+                window.location.reload();
+            },
+            error:  function(){
+                alert('Возникла ошибка: ';
+            }
+        });
+    }
+
+</script>
+
+
+
 <script>
     $(function () {
         $('.datetimepicker1').datepicker({
@@ -91,6 +104,15 @@
             autoclose: true
             //minDate: Date()
         });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('button').click(function(e) {
+            e.preventDefault();
+            $(this).next(".input_new_name").toggle(1000);
+        })
     });
 </script>
 

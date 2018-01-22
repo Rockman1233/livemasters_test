@@ -30,7 +30,7 @@ abstract class Controller {
     public function niceLook($obj){
         echo '<pre>';
         print_r($obj);
-        die();
+        //die();
     }
 
 

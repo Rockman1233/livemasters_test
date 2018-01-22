@@ -7,14 +7,18 @@
     </thead>
     <tbody>
     {% for projectName in namesOfProjects %}
-    <form action="" method="post">
-        <input type="hidden" value="{{ projectName.project_id }}" name="id">
-        <tr>
-            <td>{{ projectName.project_id }}</td>
-            <td><input type="text" placeholder="{{ projectName.project_name }}"></td>
-            <td><button  id="delete" class="btn btn-danger">Delete</button></td>
-        </tr>
-    </form>
+        <form action="" method="post">
+            <tr>
+                <td>{{ projectName.project_id }}</td>
+                <td>
+                    <button class="show-hide-field" id="{{ projectName.project_id }}">{{ projectName.project_name }}</button>
+                    <input type="text" id="input_{{ projectName.project_id }}" class='input_new_name' placeholder="{{ projectName.project_name }}" >
+                </td>
+                <td>
+                    <button  id="delete" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </form>
     {% endfor %}
     </tbody>
 </table>
