@@ -158,9 +158,25 @@
 <!-- toggle input -->
 <script>
     $(document).ready(function() {
-        $('.toggle_button').click(function(e) {
+        $('#card-1').hover(function(e) {
             e.preventDefault();
-            $(this).next(".input_new_name").toggle(500);
+            $(".hide-when-unhover-one").toggle(500);
+        })
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#card-2').hover(function(e) {
+            e.preventDefault();
+            $(".hide-when-unhover-two").toggle(500);
+        })
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#card-3').hover(function(e) {
+            e.preventDefault();
+            $(".hide-when-unhover-three").toggle(500);
         })
     });
 </script>
