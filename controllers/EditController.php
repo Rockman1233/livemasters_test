@@ -64,10 +64,10 @@ class EditController extends Controller
         if ($_POST) {
             $ChangingModel = CompanyWorker::findById($_POST['worker_id']);
             $className = 'CompanyWorker';
-            if(($_POST['worker_id'] == 0)&&($_POST['project_lastname'])){
+            if(($_POST['worker_id'] == 0)&&($_POST['worker_lastname'])){
                 $NewModel = new CompanyWorker();
-                $NewModel->project_name = $_POST['worker_lastname'];
-                return $NewModel->saveProject();
+                $NewModel->worker_lastname = $_POST['worker_lastname'];
+                return $NewModel->saveWorker();
             }
             //for deleting?
             if ($_POST['delete']) {

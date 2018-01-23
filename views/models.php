@@ -45,7 +45,7 @@
                     <h4>Список сотрудников</h4>
                     <form method="post" class="newWorker" action="javascript:void(null);" onsubmit="editWorker()">
                         <div class="form-group special-padding">
-                            <select class="form-control" name="project_id">
+                            <select class="form-control" name="worker_id">
                                 <option value="0" selected hidden>List of workers</option>
                                 {% for worker in workers %}
                                 <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>

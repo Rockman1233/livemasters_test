@@ -12,7 +12,7 @@ include_once 'ClassesExt.php';
 class CompanyWorker extends Object {
 
     public $worker_id;
-    public $worker_name;
+    public $worker_lastname;
 
 
     static function TableName()
@@ -28,14 +28,14 @@ class CompanyWorker extends Object {
         echo '</pre>';
         $prepare = self::$db->prepare(
             'INSERT INTO exam_workers 
-                        (worker_name 
+                        (worker_lastname 
                         ) 
                         VALUES 
                         (:name)');
 
 
         $prepare->execute(
-            array('name' => $this->worker_name
+            array('name' => $this->worker_lastname
             ));
     }
 
@@ -50,11 +50,11 @@ class CompanyWorker extends Object {
 
         $prepare = self::$db->prepare(
             'UPDATE exam_workers SET
-                        status  ='.$this->status.'
+                        worker_lastname =:name
                         WHERE
-                        contract_id='.$this->worker_id);
+                        worker_id =:id');
 
-        $prepare->execute();
+        $prepare->execute(array('name' => $this->worker_lastname, 'id' => $this->worker_id));
 
     }
 
@@ -69,12 +69,11 @@ class CompanyWorker extends Object {
         return $aRes? new $class($aRes):null;
     }
 
-    static function delete($id) {
-
+    static function delete($id)
+    {
         $prepare = self::$db->prepare(
-            'DELETE FROM exam_workers WHERE worker_id  ='.$id);
-        $prepare->execute();
-
+            'DELETE FROM exam_workers WHERE worker_id  = :id');
+        return $prepare->execute(array('id' => $id));
     }
 
 }

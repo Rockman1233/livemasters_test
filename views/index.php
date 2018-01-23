@@ -106,7 +106,7 @@
         var msg   = $('.newWorker').serialize();
         $.ajax({
             type: 'POST',
-            url: '../rolename',
+            url: '../workername',
             data: msg,
             success: function() {
                 window.location.reload();
