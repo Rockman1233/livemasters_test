@@ -41,7 +41,7 @@ class MainController extends Controller {
             //set POsT parameters to model
             foreach ($_POST as $param_name => $param_value){
                 if (property_exists($className, $param_name )&&(isset($param_name)))
-                    $ChangingListModel->$param_name = $param_value;
+                    $ChangingListModel->$param_name = strip_tags($param_value);
 
             }
             $ChangingListModel->saveChanges();

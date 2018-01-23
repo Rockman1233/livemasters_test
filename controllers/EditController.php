@@ -38,11 +38,11 @@ class EditController extends Controller
     public function actionEditprojectname()
     {
         if ($_POST) {
-            $ChangingModel = Project::findById($_POST['project_id']);
+            $ChangingModel = Project::findById(strip_tags($_POST['project_id']));
             $className = 'Project';
             if(($_POST['project_id'] == 0)&&($_POST['project_name'])){
                 $NewModel = new Project();
-                $NewModel->project_name = $_POST['project_name'];
+                $NewModel->project_name = strip_tags($_POST['project_name']);
                 return $NewModel->saveProject();
             }
             //for deleting?
@@ -52,7 +52,7 @@ class EditController extends Controller
             //set POsT parameters to model
             foreach ($_POST as $param_name => $param_value) {
                 if (property_exists($className, $param_name) && (isset($param_name)) && ($param_value)) {
-                    $ChangingModel->$param_name = $param_value;
+                    $ChangingModel->$param_name = strip_tags($param_value);
                 }
             }
             $ChangingModel->changeName();
@@ -66,17 +66,17 @@ class EditController extends Controller
             $className = 'CompanyWorker';
             if(($_POST['worker_id'] == 0)&&($_POST['worker_lastname'])){
                 $NewModel = new CompanyWorker();
-                $NewModel->worker_lastname = $_POST['worker_lastname'];
+                $NewModel->worker_lastname = strip_tags($_POST['worker_lastname']);
                 return $NewModel->saveWorker();
             }
             //for deleting?
             if ($_POST['delete']) {
-                return CompanyWorker::delete($ChangingModel->worker_id);
+                return CompanyWorker::delete(strip_tags($ChangingModel->worker_id));
             }
             //set POsT parameters to model
             foreach ($_POST as $param_name => $param_value) {
                 if (property_exists($className, $param_name) && (isset($param_name)) && ($param_value)) {
-                    $ChangingModel->$param_name = $param_value;
+                    $ChangingModel->$param_name = strip_tags($param_value);
                 }
             }
             $ChangingModel->changeName();
@@ -86,21 +86,21 @@ class EditController extends Controller
     public function actionEditprojectrole()
     {
         if ($_POST) {
-            $ChangingModel = Role::findById($_POST['role_id']);
+            $ChangingModel = Role::findById(strip_tags($_POST['role_id']));
             $className = 'Role';
             if(($_POST['role_id'] == 0)&&($_POST['role_name'])){
                 $NewModel = new Role();
-                $NewModel->role_name = $_POST['role_name'];
+                $NewModel->role_name = strip_tags($_POST['role_name']);
                 return $NewModel->saveRole();
             }
             //for deleting?
             if ($_POST['delete3']) {
-                return Role::delete($ChangingModel->role_id);
+                return Role::delete(strip_tags($ChangingModel->role_id));
             }
             //set POsT parameters to model
             foreach ($_POST as $param_name => $param_value) {
                 if (property_exists($className, $param_name) && (isset($param_name)) && ($param_value)) {
-                    $ChangingModel->$param_name = $param_value;
+                    $ChangingModel->$param_name = strip_tags($param_value);
                 }
             }
             $ChangingModel->changeName();
