@@ -23,16 +23,12 @@ class CompanyWorker extends Object {
 
     public function saveworker()
     {
-        echo '<pre>';
-        echo $this->project_id;
-        echo '</pre>';
         $prepare = self::$db->prepare(
             'INSERT INTO exam_workers 
                         (worker_lastname 
                         ) 
                         VALUES 
                         (:name)');
-
 
         $prepare->execute(
             array('name' => $this->worker_lastname

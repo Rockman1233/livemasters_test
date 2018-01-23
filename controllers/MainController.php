@@ -19,10 +19,10 @@ class MainController extends Controller {
 
     static public $error;
 
-    public function actionIndex()
+    public function actionIndex($sort = 1)
     {
         $title = 'CRUD интерфейс управления проектами';
-        $projects = MainList::showAll();
+        $projects = MainList::showAll($sort);
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();

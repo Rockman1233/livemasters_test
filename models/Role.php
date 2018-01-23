@@ -28,7 +28,6 @@ class Role extends Object {
                         VALUES 
                         (:name)');
 
-
         $prepare->execute(
             array('name' => $this->role_name
             ));
@@ -49,7 +48,7 @@ class Role extends Object {
                         WHERE
                         role_id =:id');
 
-        $prepare->execute(array('name' => $this->role_name, 'id' => $this->role_id));
+        return $prepare->execute(array('name' => $this->role_name, 'id' => $this->role_id));
 
     }
 

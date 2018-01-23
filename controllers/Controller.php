@@ -18,19 +18,16 @@ abstract class Controller {
 
     {
         $this->loader = new Twig_Loader_Filesystem('views');
-        //$twig = new Twig_Environment($loader, array('cache' => 'cache'));
-        $this->twig = new Twig_Environment($this->loader);
+        $this->twig = new Twig_Environment($this->loader, array('cache' => 'cache'));
+        //$this->twig = new Twig_Environment($this->loader);
         self::$template = $this->twig->loadTemplate('index.php');
     }
 
-    public function actionIndex() {
-
-    }
 
     public function niceLook($obj){
         echo '<pre>';
         print_r($obj);
-        //die();
+        die();
     }
 
 

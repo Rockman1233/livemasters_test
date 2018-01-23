@@ -25,11 +25,6 @@ class MainList extends Object {
 
     public function saveMainList()
     {
-        /*
-        echo '<pre>';
-        echo $this->projecct_id;
-        echo '</pre>';
-        */
         $prepare = self::$db->prepare(
             'INSERT INTO exam_projects_workers 
                        (project_id, worker_id, role_id, dt_begin, dt_end) 
@@ -47,14 +42,14 @@ class MainList extends Object {
     }
 
 
-    static function showAll()
+    static function showAll($sortType)
         {
-            //pagination (turn-off)
-            /*
-            $page = intval($page);
-            $count = MainList::SHOW_DEFAULT;
-            $offset = $count * ($page - 1);
-            */
+            //sorting
+            if($sortType == 1){ $model = 'ep_id';}
+            if($sortType == 2){ $model = 'project_name';}
+            if($sortType == 3){ $model = 'worker_lastname';}
+            if($sortType == 4){ $model = 'role_name';}
+
             $oQuery = Object::$db->query('SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
                                                            exam_projects.project_name, exam_projects.project_id, 
                                                            exam_roles.role_name, exam_roles.role_id, 
@@ -63,7 +58,8 @@ class MainList extends Object {
                                                     FROM `exam_projects_workers` 
                                                     JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
                                                     JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
-                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id');
+                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id
+                                                    ORDER BY '.$model);
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
         }
 

@@ -36,12 +36,7 @@ class Project extends Object {
 
     static function showAll()
         {
-            //pagination (turn-off)
-            /*
-            $page = intval($page);
-            $count = Project::SHOW_DEFAULT;
-            $offset = $count * ($page - 1);
-            */
+
             $oQuery = Object::$db->query('SELECT * FROM `exam_projects`');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
         }
