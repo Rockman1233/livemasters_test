@@ -33,7 +33,7 @@ class Route
 	public function start() {
 
         $uri = $this->getURL();
-        //echo "Строка запроса - localhost/".$uri;
+        echo "Строка запроса - localhost/".$uri;
 
 
 
@@ -45,9 +45,7 @@ class Route
                 //black magic (change reg exp)
                 $internalRoute = preg_replace("~$uriPattern~","$path","$uri");
 
-
                 $segments = explode('/',$internalRoute);
-
 
                 $controllerName = array_shift($segments).'Controller';
 
@@ -67,8 +65,8 @@ class Route
                     $actionName='actionIndex';
 
                 }
-                //echo '<br> Контроллер - '.$controllerName;
-                //echo '<br> Метод контроллера - '.$actionName;
+                echo '<br> Контроллер - '.$controllerName;
+                echo '<br> Метод контроллера - '.$actionName;
 
                 //connect files
                 $controllerFile = $_SERVER['DOCUMENT_ROOT'].'/controllers/'.$controllerName.'.php';
