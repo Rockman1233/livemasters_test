@@ -1,5 +1,4 @@
 <?php
-include './models/ClassesExt.php';
 
 /*
 Класс-маршрутизатор для определения запрашиваемой страницы.
@@ -15,7 +14,7 @@ class Route
 	public function __construct()
 	{
 		
-		$routes = 'config/routes.php';
+		$routes = './config/routes.php';
 		$this->aRouts = include($routes);
 
 	}
@@ -47,13 +46,15 @@ class Route
         foreach ($this->aRouts as $uriPattern => $path) {
             if (preg_match("~$uriPattern~",$uri)) {
 
-                //black magic (change reg exp)
+
                 $url = $GLOBALS['base_dir'];
                 //вырезаем ненужную часть урла
-                $cutDir = preg_replace("~$url~","","$uri");
-
-                $internalRoute = preg_replace("~$uriPattern~","$path","$cutDir");
-                //$parametrs[0] = preg_replace("/[^0-9]/","","$uri");
+                $uri = strtok($uri, '?');
+                $cutDir = preg_split("~/~", $uri);
+                $lastFolder = end($cutDir);
+                //black magic (change reg exp)
+                $internalRoute = preg_replace("~$uriPattern~","$path","$lastFolder");
+                //$parametrs[0] = preg_replace("/~[^0-9]~/","","$uri");
 
                 $segments = explode('/',$internalRoute);
 
@@ -67,13 +68,13 @@ class Route
 
                 $actionName = 'action'.ucfirst(array_shift($segments));
 
-                $parametrs = $segments;
+                $parametrs[] = $_GET['sort'];
 
                 //echo '<br> Контроллер - '.$controllerName;
                 //echo '<br> Метод контроллера - '.$actionName;
 
                 //connect files
-                $controllerFile = 'controllers/'.$controllerName.'.php';
+                $controllerFile = './controllers/'.$controllerName.'.php';
 
                 if(file_exists($controllerFile))
                 {

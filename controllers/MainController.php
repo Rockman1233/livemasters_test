@@ -26,7 +26,7 @@ class MainController extends Controller {
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
-        $base_url = $GLOBALS['base_dir'];
+        $base_url = $_SERVER['REQUEST_URI'];
         echo self::$template->render(array(
             'url' => $base_url,
             'sort' => $sort,

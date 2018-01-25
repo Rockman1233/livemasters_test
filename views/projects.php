@@ -14,10 +14,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col"><a href="../../../{{ url }}projects/1">ID</a></th>
-            <th scope="col"><a href="../../../{{ url }}projects/2">Project Name</a></th>
-            <th scope="col"><a href="../../../{{ url }}projects/3">Worker Name</a></th>
-            <th scope="col"><a href="../../../{{ url }}projects/4">Role</a></th>
+            <th scope="col"><a href="?sort=1">ID</a></th>
+            <th scope="col"><a href="?sort=2">Project Name</a></th>
+            <th scope="col"><a href="?sort=3">Worker Name</a></th>
+            <th scope="col"><a href="?sort=4">Role</a></th>
             <th scope="col">Date of beginning</th>
             <th scope="col">Date of ending</th>
             <th scope="col">Confirm</th>

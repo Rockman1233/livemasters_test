@@ -20,35 +20,18 @@ class __TwigTemplate_58df58ae2e36d811c039d51caca3b8aa054322d4865bcfb1a824c0ab1f5
 <html lang=\"ru-Ru\">
 <head>
     <meta charset=\"UTF-8\">
-    ";
-        // line 5
-        if (($context["sort"] ?? null)) {
-            // line 6
-            echo "    <link href=\"../vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
-    <link href=\"../assets/bootstrap-datepicker-1/css/bootstrap-datepicker.min.css\" rel=\"stylesheet\">
-    <link href=\"../assets/site.css\" rel=\"stylesheet\">
-    <script src=\"../vendor/components/jquery/jquery.min.js\"></script>
-    <script src=\"../vendor/twbs/bootstrap/dist/js/bootstrap.min.js\"></script>
-    <script src=\"../assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js\"></script>
-    <script src=\"../assets/bootstrap-datepicker-1/locales/bootstrap-datepicker.ru.min.js\"></script>
-    ";
-        } else {
-            // line 14
-            echo "    <link href=\"./vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
+    <link href=\"./vendor/twbs/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
     <link href=\"./assets/bootstrap-datepicker-1/css/bootstrap-datepicker.min.css\" rel=\"stylesheet\">
     <link href=\"./assets/site.css\" rel=\"stylesheet\">
     <script src=\"./vendor/components/jquery/jquery.min.js\"></script>
     <script src=\"./vendor/twbs/bootstrap/dist/js/bootstrap.min.js\"></script>
     <script src=\"./assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js\"></script>
     <script src=\"./assets/bootstrap-datepicker-1/locales/bootstrap-datepicker.ru.min.js\"></script>
-    ";
-        }
-        // line 22
-        echo "    <!-- Большой жирный костыль :(-->
+    <!-- Большой жирный костыль :(-->
 
 
     <title>";
-        // line 25
+        // line 15
         echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
         echo "</title>
 </head>
@@ -70,21 +53,17 @@ class __TwigTemplate_58df58ae2e36d811c039d51caca3b8aa054322d4865bcfb1a824c0ab1f5
         <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
             <ul class=\"nav navbar-nav\">
                 <li class=\"";
-        // line 44
+        // line 34
         if ((($context["title"] ?? null) == "CRUD интерфейс управления проектами")) {
             echo "active";
         }
-        echo "\"><a href=\"../../../";
-        echo twig_escape_filter($this->env, ($context["url"] ?? null), "html", null, true);
-        echo "projects\">Список проектов и задействованных сотрудников</a></li>
+        echo "\"><a href=\"./projects\">Список проектов и задействованных сотрудников</a></li>
                 <li class=\"";
-        // line 45
+        // line 35
         if ((($context["title"] ?? null) == "Управление моделями")) {
             echo "active";
         }
-        echo "\"><a href=\"../../../";
-        echo twig_escape_filter($this->env, ($context["url"] ?? null), "html", null, true);
-        echo "edit\"\">Основные модели</a></li>
+        echo "\"><a href=\"./edit\"\">Основные модели</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -93,24 +72,24 @@ class __TwigTemplate_58df58ae2e36d811c039d51caca3b8aa054322d4865bcfb1a824c0ab1f5
 
 <div class=\"container\">
     ";
-        // line 53
+        // line 43
         if ((($context["title"] ?? null) == "CRUD интерфейс управления проектами")) {
-            // line 54
+            // line 44
             echo "    ";
-            $this->loadTemplate("projects.php", "index.php", 54)->display($context);
-            // line 55
+            $this->loadTemplate("projects.php", "index.php", 44)->display($context);
+            // line 45
             echo "    ";
         }
-        // line 56
+        // line 46
         echo "    ";
         if ((($context["title"] ?? null) == "Управление моделями")) {
-            // line 57
+            // line 47
             echo "    ";
-            $this->loadTemplate("models.php", "index.php", 57)->display($context);
-            // line 58
+            $this->loadTemplate("models.php", "index.php", 47)->display($context);
+            // line 48
             echo "    ";
         }
-        // line 59
+        // line 49
         echo "</div>
 
 <!----- SCRIPTS -------->
@@ -121,7 +100,7 @@ class __TwigTemplate_58df58ae2e36d811c039d51caca3b8aa054322d4865bcfb1a824c0ab1f5
         \$('.btn-danger').click(function () {
             var id = \$(this).attr('data-id');
             \$.ajax({
-                url: 'main/deleteline',
+                url: 'deleteline',
                 type: 'POST',
                 data: {'delete_line_with_id': id},
                 success: function (result) {
@@ -139,7 +118,7 @@ class __TwigTemplate_58df58ae2e36d811c039d51caca3b8aa054322d4865bcfb1a824c0ab1f5
         var msg   = \$('#formx').serialize();
         \$.ajax({
             type: 'POST',
-            url: 'main/addnew',
+            url: 'addnew',
             data: msg,
             success: function() {
                 window.location.reload();
@@ -267,7 +246,7 @@ class __TwigTemplate_58df58ae2e36d811c039d51caca3b8aa054322d4865bcfb1a824c0ab1f5
 
     public function getDebugInfo()
     {
-        return array (  114 => 59,  111 => 58,  108 => 57,  105 => 56,  102 => 55,  99 => 54,  97 => 53,  82 => 45,  74 => 44,  52 => 25,  47 => 22,  37 => 14,  27 => 6,  25 => 5,  19 => 1,);
+        return array (  93 => 49,  90 => 48,  87 => 47,  84 => 46,  81 => 45,  78 => 44,  76 => 43,  63 => 35,  57 => 34,  35 => 15,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

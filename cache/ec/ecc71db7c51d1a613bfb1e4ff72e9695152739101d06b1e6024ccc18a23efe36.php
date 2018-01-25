@@ -32,22 +32,10 @@ class __TwigTemplate_e5822537c3ed0ac0779a2a94b408174103db8790f9c5f5bbb941b84b863
     <table class=\"table\">
         <thead>
         <tr>
-            <th scope=\"col\"><a href=\"../../../";
-        // line 17
-        echo twig_escape_filter($this->env, ($context["url"] ?? null), "html", null, true);
-        echo "projects/1\">ID</a></th>
-            <th scope=\"col\"><a href=\"../../../";
-        // line 18
-        echo twig_escape_filter($this->env, ($context["url"] ?? null), "html", null, true);
-        echo "projects/2\">Project Name</a></th>
-            <th scope=\"col\"><a href=\"../../../";
-        // line 19
-        echo twig_escape_filter($this->env, ($context["url"] ?? null), "html", null, true);
-        echo "projects/3\">Worker Name</a></th>
-            <th scope=\"col\"><a href=\"../../../";
-        // line 20
-        echo twig_escape_filter($this->env, ($context["url"] ?? null), "html", null, true);
-        echo "projects/4\">Role</a></th>
+            <th scope=\"col\"><a href=\"?sort=1\">ID</a></th>
+            <th scope=\"col\"><a href=\"?sort=2\">Project Name</a></th>
+            <th scope=\"col\"><a href=\"?sort=3\">Worker Name</a></th>
+            <th scope=\"col\"><a href=\"?sort=4\">Role</a></th>
             <th scope=\"col\">Date of beginning</th>
             <th scope=\"col\">Date of ending</th>
             <th scope=\"col\">Confirm</th>
@@ -350,7 +338,7 @@ class __TwigTemplate_e5822537c3ed0ac0779a2a94b408174103db8790f9c5f5bbb941b84b863
 
     public function getDebugInfo()
     {
-        return array (  336 => 159,  321 => 147,  310 => 139,  303 => 134,  292 => 132,  288 => 131,  282 => 130,  274 => 124,  263 => 122,  259 => 121,  253 => 120,  245 => 114,  234 => 112,  230 => 111,  224 => 110,  200 => 88,  190 => 84,  181 => 78,  169 => 69,  161 => 63,  150 => 61,  146 => 60,  140 => 59,  131 => 52,  120 => 50,  116 => 49,  110 => 48,  101 => 41,  90 => 39,  86 => 38,  80 => 37,  73 => 33,  66 => 29,  63 => 28,  59 => 27,  49 => 20,  45 => 19,  41 => 18,  37 => 17,  19 => 1,);
+        return array (  324 => 159,  309 => 147,  298 => 139,  291 => 134,  280 => 132,  276 => 131,  270 => 130,  262 => 124,  251 => 122,  247 => 121,  241 => 120,  233 => 114,  222 => 112,  218 => 111,  212 => 110,  188 => 88,  178 => 84,  169 => 78,  157 => 69,  149 => 63,  138 => 61,  134 => 60,  128 => 59,  119 => 52,  108 => 50,  104 => 49,  98 => 48,  89 => 41,  78 => 39,  74 => 38,  68 => 37,  61 => 33,  54 => 29,  51 => 28,  47 => 27,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

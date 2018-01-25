@@ -23,7 +23,6 @@ abstract class Controller {
         self::$template = $this->twig->loadTemplate('index.php');
     }
 
-
     public function niceLook($obj){
         echo '<pre>';
         print_r($obj);
