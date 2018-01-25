@@ -18,8 +18,8 @@ abstract class Controller {
 
     {
         $this->loader = new Twig_Loader_Filesystem('views');
-        //$this->twig = new Twig_Environment($this->loader, array('cache' => 'cache'));
-        $this->twig = new Twig_Environment($this->loader);
+        $this->twig = new Twig_Environment($this->loader, array('cache' => 'cache'));
+        //$this->twig = new Twig_Environment($this->loader);
         self::$template = $this->twig->loadTemplate('index.php');
     }
 
