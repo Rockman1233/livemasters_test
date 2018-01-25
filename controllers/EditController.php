@@ -7,10 +7,10 @@
  */
 
 include_once('Controller.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/Project.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/MainList.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/CompanyWorker.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/Role.php');
+include_once('./models/Project.php');
+include_once('./models/MainList.php');
+include_once('./models/CompanyWorker.php');
+include_once('./models/Role.php');
 
 
 
@@ -26,7 +26,9 @@ class EditController extends Controller
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
+        $base_url = $GLOBALS['base_dir'];
         echo self::$template->render(array(
+            'url' => $base_url,
             'title' => $title,
             'workers' => $workers,
             'roles' => $roles,

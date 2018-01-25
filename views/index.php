@@ -2,6 +2,7 @@
 <html lang="ru-Ru">
 <head>
     <meta charset="UTF-8">
+    {% if sort %}
     <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/bootstrap-datepicker-1/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="../assets/site.css" rel="stylesheet">
@@ -9,6 +10,18 @@
     <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js"></script>
     <script src="../assets/bootstrap-datepicker-1/locales/bootstrap-datepicker.ru.min.js"></script>
+    {% else %}
+    <link href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/bootstrap-datepicker-1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="./assets/site.css" rel="stylesheet">
+    <script src="./vendor/components/jquery/jquery.min.js"></script>
+    <script src="./vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js"></script>
+    <script src="./assets/bootstrap-datepicker-1/locales/bootstrap-datepicker.ru.min.js"></script>
+    {% endif %}
+    <!-- Большой жирный костыль :(-->
+
+
     <title>{{ title }}</title>
 </head>
 <body>
@@ -28,8 +41,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{% if title == "CRUD интерфейс управления проектами" %}active{% endif %}"><a href="../projects">Список проектов и задействованных сотрудников</a></li>
-                <li class="{% if title == "Управление моделями" %}active{% endif %}"><a href="../edit">Основные модели</a></li>
+                <li class="{% if title == "CRUD интерфейс управления проектами" %}active{% endif %}"><a href="../../../{{ url }}projects">Список проектов и задействованных сотрудников</a></li>
+                <li class="{% if title == "Управление моделями" %}active{% endif %}"><a href="../../../{{ url }}edit"">Основные модели</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -53,7 +66,7 @@
         $('.btn-danger').click(function () {
             var id = $(this).attr('data-id');
             $.ajax({
-                url: '../main/deleteline',
+                url: 'main/deleteline',
                 type: 'POST',
                 data: {'delete_line_with_id': id},
                 success: function (result) {
@@ -71,7 +84,7 @@
         var msg   = $('#formx').serialize();
         $.ajax({
             type: 'POST',
-            url: '../main/addnew',
+            url: 'main/addnew',
             data: msg,
             success: function() {
                 window.location.reload();
@@ -84,6 +97,7 @@
 
 </script>
 
+
 <!-- ajax (confirm edit)-->
 
 <script type="text/javascript" language="javascript">
@@ -91,7 +105,7 @@
         var msg   = $('.newName').serialize();
         $.ajax({
             type: 'POST',
-            url: '../projname',
+            url: 'projname',
             data: msg,
             success: function() {
                 window.location.reload();
@@ -106,7 +120,7 @@
         var msg   = $('.newWorker').serialize();
         $.ajax({
             type: 'POST',
-            url: '../workername',
+            url: 'workername',
             data: msg,
             success: function() {
                 window.location.reload();
@@ -121,7 +135,7 @@
         var msg   = $('.newRole').serialize();
         $.ajax({
             type: 'POST',
-            url: '../rolename',
+            url: 'rolename',
             data: msg,
             success: function() {
                 window.location.reload();

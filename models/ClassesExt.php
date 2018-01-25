@@ -1,7 +1,7 @@
 <?php
 
 
-include $_SERVER['DOCUMENT_ROOT'].'/config/DBConnect.php';
+include './config/DBConnect.php';
 
 
 abstract class Object{

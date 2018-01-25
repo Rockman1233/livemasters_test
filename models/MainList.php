@@ -45,6 +45,7 @@ class MainList extends Object {
     static function showAll($sortType)
         {
             //sorting
+            $model = 'ep_id';
             if($sortType == 1){ $model = 'ep_id';}
             if($sortType == 2){ $model = 'project_name';}
             if($sortType == 3){ $model = 'worker_lastname';}

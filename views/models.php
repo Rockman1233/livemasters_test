@@ -2,7 +2,7 @@
     <div class="container">
             <div class="col-lg-4">
                 <div class="card" id="card-1">
-                    <img src="../assets/img/finance-1.jpg">
+                    <img src="./assets/img/finance-1.jpg">
                     <h4>Список проектов</h4>
                     <form method="post" class="newName" action="javascript:void(null);" onsubmit="editName()">
                         <div class="form-group special-padding">
@@ -24,7 +24,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card" id="card-2">
-                    <img src="../assets/img/finance-3.jpg">
+                    <img src="./assets/img/finance-3.jpg">
                     <h4>Список сотрудников</h4>
                     <form method="post" class="newWorker" action="javascript:void(null);" onsubmit="editWorker()">
                         <div class="form-group special-padding">
@@ -46,7 +46,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card" id="card-3">
-                    <img src="../assets/img/finance-2.jpg">
+                    <img src="./assets/img/finance-2.jpg">
                     <h4>Список ролей</h4>
                     <form method="post" class="newRole" action="javascript:void(null);" onsubmit="editRole()">
                         <div class="form-group special-padding">

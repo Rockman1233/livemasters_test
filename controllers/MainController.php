@@ -7,10 +7,10 @@
  */
 
 include_once('Controller.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/Project.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/MainList.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/CompanyWorker.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/models/Role.php');
+include_once('./models/Project.php');
+include_once('./models/MainList.php');
+include_once('./models/CompanyWorker.php');
+include_once('./models/Role.php');
 
 
 
@@ -19,14 +19,17 @@ class MainController extends Controller {
 
     static public $error;
 
-    public function actionIndex($sort = 1)
+    public function actionIndex($sort)
     {
         $title = 'CRUD интерфейс управления проектами';
         $projects = MainList::showAll($sort);
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
+        $base_url = $GLOBALS['base_dir'];
         echo self::$template->render(array(
+            'url' => $base_url,
+            'sort' => $sort,
             'error' => self::$error,
             'title' => $title,
             'projects' => $projects,

@@ -14,10 +14,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col"><a href="../projects/1">ID</a></th>
-            <th scope="col"><a href="../projects/2">Project Name</a></th>
-            <th scope="col"><a href="../projects/3">Worker Name</a></th>
-            <th scope="col"><a href="../projects/4">Role</a></th>
+            <th scope="col"><a href="../../../{{ url }}projects/1">ID</a></th>
+            <th scope="col"><a href="../../../{{ url }}projects/2">Project Name</a></th>
+            <th scope="col"><a href="../../../{{ url }}projects/3">Worker Name</a></th>
+            <th scope="col"><a href="../../../{{ url }}projects/4">Role</a></th>
             <th scope="col">Date of beginning</th>
             <th scope="col">Date of ending</th>
             <th scope="col">Confirm</th>
@@ -25,7 +25,7 @@
         </thead>
         <tbody>
         {% for project in projects %}
-        <form action="../projects" method="post">
+        <form action="projects" method="post">
         <input type="hidden" value="{{ project.ep_id }}" name="ep_id">
 
         <tr>

@@ -1,4 +1,5 @@
 <?php
+include './models/ClassesExt.php';
 
 /*
 Класс-маршрутизатор для определения запрашиваемой страницы.
@@ -14,7 +15,7 @@ class Route
 	public function __construct()
 	{
 		
-		$routes = $_SERVER['DOCUMENT_ROOT'].'/config/routes.php';
+		$routes = 'config/routes.php';
 		$this->aRouts = include($routes);
 
 	}
@@ -29,21 +30,30 @@ class Route
         return null;
     }
 
+    public function niceLook($obj){
+        echo '<pre>';
+        print_r($obj);
+        echo '</pre>';
+        echo '<br>';
+        //die();
+    }
+
 
 	public function start() {
 
         $uri = $this->getURL();
-        echo "Строка запроса - localhost/".$uri;
-
-
-
+        //echo "Строка запроса - ".$uri;
 
         foreach ($this->aRouts as $uriPattern => $path) {
             if (preg_match("~$uriPattern~",$uri)) {
 
-
                 //black magic (change reg exp)
-                $internalRoute = preg_replace("~$uriPattern~","$path","$uri");
+                $url = $GLOBALS['base_dir'];
+                //вырезаем ненужную часть урла
+                $cutDir = preg_replace("~$url~","","$uri");
+
+                $internalRoute = preg_replace("~$uriPattern~","$path","$cutDir");
+                //$parametrs[0] = preg_replace("/[^0-9]/","","$uri");
 
                 $segments = explode('/',$internalRoute);
 
@@ -56,27 +66,20 @@ class Route
                 //take name of method
 
                 $actionName = 'action'.ucfirst(array_shift($segments));
+
                 $parametrs = $segments;
 
-
-                if($controllerName=='Controller'&&$actionName=='action')
-                {
-                    $controllerName = 'MainController';
-                    $actionName='actionIndex';
-
-                }
-                echo '<br> Контроллер - '.$controllerName;
-                echo '<br> Метод контроллера - '.$actionName;
+                //echo '<br> Контроллер - '.$controllerName;
+                //echo '<br> Метод контроллера - '.$actionName;
 
                 //connect files
-                $controllerFile = $_SERVER['DOCUMENT_ROOT'].'/controllers/'.$controllerName.'.php';
+                $controllerFile = 'controllers/'.$controllerName.'.php';
+
                 if(file_exists($controllerFile))
                 {
                     include_once $controllerFile;
                 }
-                else {
-                    include_once $_SERVER['DOCUMENT_ROOT'].'/views/404.php';
-                }
+
                 //create new object
                 $classObject = new $controllerName();
                 $result = call_user_func_array(array($classObject, $actionName), $parametrs);
@@ -85,9 +88,11 @@ class Route
                     break;
                 }
 
+
             }
 
         }
+
     }
     
 }
