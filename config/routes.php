@@ -14,5 +14,7 @@ return array(
     'addnew' => 'main/addnew',
     'projname' => 'edit/editprojectname',
     'workername' => 'edit/editprojectworker',
-    'rolename' => 'edit/editprojectrole'
+    'rolename' => 'edit/editprojectrole',
+    'summ-proj' => 'Sproject/index',
+    'summ-workers' => 'Wproject/index',
 );

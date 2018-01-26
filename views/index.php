@@ -46,6 +46,12 @@
     {% if title == "Управление моделями" %}
     {% include "models.php" %}
     {% endif %}
+    {% if title == "Сводка проектов" %}
+    {% include "projectsSummary.php" %}
+    {% endif %}
+    {% if title == "Сводка сотрудников" %}
+    {% include "workersSummary.php" %}
+    {% endif %}
 </div>
 
 <!----- SCRIPTS -------->
