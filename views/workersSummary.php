@@ -5,12 +5,12 @@
 
             <h2>Выберете сотрудника</h2>
             <hr>
-            <form action="" method="POST">
+            <form action="summ-workers" method="POST">
 
                 <div class="form-group">
-                    <select class="form-control" name="project_id">
+                    <select class="form-control" name="worker_id">
                         {% for worker in workers %}
-                        <option value="{{ projectName.project_id }}">{{ worker.worker_lastname }}</option>
+                        <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -23,7 +23,7 @@
                 </div>
                 <br>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control" name="dt_begin">
+                    <input type="text" class="form-control" name="dt_end">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
@@ -37,3 +37,31 @@
 
     </div>
 </div>
+{% if TheWorker %}
+<div class="container" id="toggle-table">
+    <h1>{{ TheWorker }}</h1>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">First date</th>
+                <th scope="col">Deadline</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for deal in deals %}
+            <tr>
+                <th>{{ deal.project_name }}</th>
+                <td>{{ deal.role_name }}</td>
+                <td>{{ deal.dt_begin }}</td>
+                <td>{{ deal.dt_end }}</td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}

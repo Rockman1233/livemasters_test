@@ -37,7 +37,6 @@ class MainController extends Controller {
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects
         ));
-        //может быть критичный момент с ПОСТОМ из других контроллеров
         if($_POST){
             $ChangingListModel = MainList::findById($_POST['ep_id']);
             $className = 'MainList';

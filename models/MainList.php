@@ -101,4 +101,38 @@ class MainList extends Object {
         return $aRes? new $class($aRes):null;
     }
 
+    public static function findByDates($project, $start, $end){
+        $oQuery = Object::$db->query("SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
+                                                           exam_projects.project_name, exam_projects.project_id, 
+                                                           exam_roles.role_name, exam_roles.role_id, 
+                                                           exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
+                                                           exam_projects_workers.ep_id
+                                                    FROM `exam_projects_workers` 
+                                                    JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
+                                                    JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
+                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
+                                                    WHERE exam_projects_workers.project_id= $project 
+                                                    AND exam_projects_workers.dt_begin >= '$start' 
+                                                    AND exam_projects_workers.dt_end <= '$end'
+                                                    ORDER BY exam_projects_workers.dt_begin");
+        return $oQuery->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function findByDatesForWorker($user, $start, $end){
+        $oQuery = Object::$db->query("SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
+                                                           exam_projects.project_name, exam_projects.project_id, 
+                                                           exam_roles.role_name, exam_roles.role_id, 
+                                                           exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
+                                                           exam_projects_workers.ep_id
+                                                    FROM `exam_projects_workers` 
+                                                    JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
+                                                    JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
+                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
+                                                    WHERE exam_projects_workers.worker_id= $user 
+                                                    AND exam_projects_workers.dt_begin >= '$start' 
+                                                    AND exam_projects_workers.dt_end <= '$end'
+                                                    ORDER BY exam_projects_workers.dt_begin");
+        return $oQuery->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

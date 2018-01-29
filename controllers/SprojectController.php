@@ -21,20 +21,27 @@ class SprojectController extends Controller
 
     public function actionIndex()
     {
+        if($_POST){
+            $arrayOfProjects = MainList::findByDates(trim($_POST['project_id']),trim($_POST['dt_begin']),trim($_POST['dt_end']) );
+            $chosenProject = $arrayOfProjects[0]['project_name'];
+        }
         $title = 'Сводка проектов';
         $projects = MainList::showAll($sort=1);
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
-        $base_url = $GLOBALS['base_dir'];
         echo self::$template->render(array(
-            'url' => $base_url,
             'title' => $title,
             'workers' => $workers,
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects,
-            'projects' => $projects
+            'projects' => $projects,
+            'deals' => $arrayOfProjects,
+            'TheProject' => $chosenProject
         ));
+
+    }
+    public function sameNameAndRole($array){
 
     }
 

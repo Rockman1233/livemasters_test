@@ -21,6 +21,10 @@ class WprojectController extends Controller
 
     public function actionIndex()
     {
+        if($_POST){
+            $arrayOfProjects = MainList::findByDatesForWorker(trim($_POST['worker_id']),trim($_POST['dt_begin']),trim($_POST['dt_end']) );
+            $chosenWorker = $arrayOfProjects[0]['worker_lastname'];
+        }
         $title = 'Сводка сотрудников';
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
@@ -31,7 +35,9 @@ class WprojectController extends Controller
             'title' => $title,
             'workers' => $workers,
             'roles' => $roles,
-            'namesOfProjects' => $namesOfProjects
+            'namesOfProjects' => $namesOfProjects,
+            'deals' => $arrayOfProjects,
+            'TheWorker' => $chosenWorker
         ));
 
     }
