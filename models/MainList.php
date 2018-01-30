@@ -102,7 +102,7 @@ class MainList extends Object {
     }
 
     public static function findByDates($project, $start, $end){
-        $oQuery = Object::$db->query("SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
+        $oQuery = Object::$db->prepare("SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
                                                            exam_projects.project_name, exam_projects.project_id, 
                                                            exam_roles.role_name, exam_roles.role_id, 
                                                            exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
@@ -111,15 +111,19 @@ class MainList extends Object {
                                                     JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
                                                     JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
                                                     JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
-                                                    WHERE exam_projects_workers.project_id= $project 
-                                                    AND exam_projects_workers.dt_begin >= '$start' 
-                                                    AND exam_projects_workers.dt_end <= '$end'
+                                                    WHERE exam_projects_workers.project_id=:need_project 
+                                                    AND exam_projects_workers.dt_begin >=:date_begin 
+                                                    AND exam_projects_workers.dt_end <=:date_end
                                                     ORDER BY exam_projects_workers.dt_begin");
+        $oQuery->execute(['need_project' => $project,
+            'date_begin' =>$start,
+            'date_end' =>$end
+        ]);
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function findByDatesForWorker($user, $start, $end){
-        $oQuery = Object::$db->query("SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
+        $oQuery = Object::$db->prepare("SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
                                                            exam_projects.project_name, exam_projects.project_id, 
                                                            exam_roles.role_name, exam_roles.role_id, 
                                                            exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
@@ -128,10 +132,15 @@ class MainList extends Object {
                                                     JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
                                                     JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
                                                     JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
-                                                    WHERE exam_projects_workers.worker_id= $user 
-                                                    AND exam_projects_workers.dt_begin >= '$start' 
-                                                    AND exam_projects_workers.dt_end <= '$end'
+                                                    WHERE exam_projects_workers.worker_id=:need_user 
+                                                    AND exam_projects_workers.dt_begin >=:date_begin 
+                                                    AND exam_projects_workers.dt_end <=:date_end
                                                     ORDER BY exam_projects_workers.dt_begin");
+        $oQuery->execute(['need_user' => $user,
+                          'date_begin' =>$start,
+                          'date_end' =>$end
+                         ]);
+
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
 
