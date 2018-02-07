@@ -41,7 +41,7 @@ class EditController extends Controller {
      */
 
     public function actionEditprojectname() {
-        if ($_POST['project_id']) {
+        if ($_POST['project_name'] or $_POST['delete']) {
             $ChangingModel = Project::findById(strip_tags($_POST['project_id']));
             $className = 'Project';
             if(($_POST['project_id'] == 0)&&($_POST['project_name'])) {
@@ -68,7 +68,7 @@ class EditController extends Controller {
      */
 
     public function actionEditprojectworker() {
-        if ($_POST['worker_id']) {
+        if ($_POST['worker_lastname'] or $_POST['delete2']) {
             $ChangingModel = CompanyWorker::findById($_POST['worker_id']);
             $className = 'CompanyWorker';
             if(($_POST['worker_id'] == 0)&&($_POST['worker_lastname'])){
@@ -77,7 +77,7 @@ class EditController extends Controller {
                 return $NewModel->saveWorker();
             }
             //удаление?
-            if ($_POST['delete']) {
+            if ($_POST['delete2']) {
                 return CompanyWorker::delete(strip_tags($ChangingModel->worker_id));
             }
             //установить POsT параметры в модель
@@ -95,7 +95,7 @@ class EditController extends Controller {
      */
 
     public function actionEditprojectrole() {
-        if ($_POST['role_id']&&$_POST['role_name']) {
+        if ($_POST['delete3'] or $_POST['role_name']) {
             $ChangingModel = Role::findById(strip_tags($_POST['role_id']));
             $className = 'Role';
             if(($_POST['role_id'] == 0)&&($_POST['role_name'])){

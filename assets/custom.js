@@ -65,7 +65,7 @@ function call() {
                 success: function(data){  
                     var $response=$(data);
 					var freshTable = $response.find('#content-tabel').html();
-					$("#content-tabel").html(freshTable);
+					$('#content-tabel').html(freshTable);
 					$('#formOfNewRow')[0].reset();
 					//Переинициализация datepicker
 					$('.datetimepicker1').datepicker({
@@ -95,17 +95,25 @@ function call() {
  */  
 
 function editName() {
-        var msg   = $('.newName').serialize();
+        var msg   = $('.js-newName').serialize();
         $.ajax({
             type: 'POST',
             url: 'projname',
             data: msg,
-            success: function() {
-                window.location.reload();
-            }
-
-        });
-    }
+            success: function(){  
+                $.ajax({  
+                url: 'edit',  
+                cache: false,  
+                success: function(data){  
+                    var $response=$(data);
+					var freshTable = $response.find('.js-name-form-control').html();
+					$('.js-name-form-control').html(freshTable);
+					$('.js-newName')[0].reset();					
+                }  
+            });  
+			}
+		});
+    };
 
 /**
  * 
@@ -113,14 +121,23 @@ function editName() {
  */  
 
 function editWorker() {
-        var msg   = $('.newWorker').serialize();
+        var msg   = $('.js-newWorker').serialize();
         $.ajax({
             type: 'POST',
             url: 'workername',
             data: msg,
-            success: function() {
-                window.location.reload();
-            }
+            success: function(){  
+                $.ajax({  
+                url: 'edit',  
+                cache: false,  
+                success: function(data){  
+                    var $response=$(data);
+					var freshTable = $response.find('.js-worker-form-control').html();
+					$('.js-worker-form-control').html(freshTable);
+					$('.js-newWorker')[0].reset();					
+                }  
+            });  
+			}
 
         });
     }
@@ -131,14 +148,23 @@ function editWorker() {
  */  
 
 function editRole() {
-        var msg   = $('.newRole').serialize();
+        var msg   = $('.js-newRole').serialize();
         $.ajax({
             type: 'POST',
             url: 'rolename',
             data: msg,
-            success: function() {
-                window.location.reload();
-            }
+            success: function(){  
+                $.ajax({  
+                url: 'edit',  
+                cache: false,  
+                success: function(data){  
+                    var $response=$(data);
+					var freshTable = $response.find('.js-role-form-control').html();
+					$('.js-role-form-control').html(freshTable);
+					$('.js-newRole')[0].reset();					
+                }  
+            });  
+			}
 
         });
     }
@@ -148,29 +174,63 @@ function editRole() {
  * Туглы (Основные модели)
  */
 
-    $(document).ready(function() {
-        $('#card-1').hover(function(e) {
-            e.preventDefault();
-            $(".hide-when-unhover-one").toggle(500);
-        })
-    });
+$(document).ready(function() {
+    $('#card-1').hover(function(e) {
+        e.preventDefault();
+        $(".hide-when-unhover-one").toggle(500);
+    })
+});
 
-    $(document).ready(function() {
-        $('#card-2').hover(function(e) {
-            e.preventDefault();
-            $(".hide-when-unhover-two").toggle(500);
-        })
-    });
+$(document).ready(function() {
+    $('#card-2').hover(function(e) {
+        e.preventDefault();
+        $(".hide-when-unhover-two").toggle(500);
+    })
+});
 
-    $(document).ready(function() {
-        $('#card-3').hover(function(e) {
-            e.preventDefault();
-            $(".hide-when-unhover-three").toggle(500);
-        })
-    });
+$(document).ready(function() {
+    $('#card-3').hover(function(e) {
+        e.preventDefault();
+        $(".hide-when-unhover-three").toggle(500);
+    })
+});
+
+/**
+ * Форма поиска проекта по дате
+ */ 
+function findingProj() {
+        var msg   = $('.js-projForm').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'summ-proj',
+            data: msg,
+            success: function(data){
+				var $response=$(data);
+				var freshTable = $response.find('.js-blockOfProjects').html();
+				$('.js-blockOfProjects').html(freshTable);
+			}
+        });
+    }
+
+/**
+ * Форма поиска проекта по сотруднику и дате
+ */ 
+function findingProjByWorker() {
+        var msg   = $('.js-projForm').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'summ-workers',
+            data: msg,
+            success: function(data){
+				var $response=$(data);
+				var freshTable = $response.find('.js-blockOfProjects').html();
+				$('.js-blockOfProjects').html(freshTable);
+			}
+        });
+    }	
     
 /**
- * DataPicker
+ * DatePicker
  */    
 
 $(function () {

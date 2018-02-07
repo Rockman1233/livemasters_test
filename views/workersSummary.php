@@ -5,7 +5,7 @@
 
             <h2>Выберете сотрудника</h2>
             <hr>
-            <form action="summ-workers" method="POST">
+            <form class="js-projForm" action="javascript:void(null);" onsubmit="findingProjByWorker()">    
 
                 <div class="form-group">
                     <select class="form-control" name="worker_id">
@@ -37,8 +37,8 @@
 
     </div>
 </div>
-{% if TheWorker %}
-<div class="container" id="toggle-table">
+
+<div class="container js-blockOfProjects" id="toggle-table">
     <h1>{{ TheWorker }}</h1>
     <div class="row">
         <table class="table">
@@ -69,4 +69,3 @@
         {% endfor %}
     </div>
 </div>
-{% endif %}

@@ -22,7 +22,7 @@ class WprojectController extends Controller {
      */
     
     public function actionIndex() {
-        if($_POST['worker_id']){
+        if($_POST['worker_id']) {
             $arrayOfProjects = MainList::findByDatesForWorker(trim($_POST['worker_id']),trim($_POST['dt_begin']),trim($_POST['dt_end']) );
             $generalProjects = [];
             foreach ($arrayOfProjects as $project) {

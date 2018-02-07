@@ -5,8 +5,7 @@
 
             <h2>Выберете интересующий проект</h2>
             <hr>
-
-            <form action="summ-proj" method="POST">
+            <form class="js-projForm" action="javascript:void(null);" onsubmit="findingProj()">    
 
                 <div class="form-group">
                     <select class="form-control" name="project_id">
@@ -40,8 +39,8 @@
 
     </div>
 </div>
-{% if TheProject %}
-<div class="container" id="toggle-table">
+
+<div class="container js-blockOfProjects" id="toggle-table">
     <h1>{{ TheProject }}</h1>
     <div class="row">
         <table class="table">
@@ -67,4 +66,3 @@
         </table>
     </div>
 </div>
-{% endif %}
