@@ -9,6 +9,7 @@
 return array(
 
     'projects' => 'main/index',
+    'submitform' => 'main/submit',
     'edit' => 'edit/index',
     'deleteline' => 'main/deleteline',
     'addnew' => 'main/addnew',

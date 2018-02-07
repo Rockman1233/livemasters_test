@@ -8,7 +8,7 @@ abstract class Object{
 
     /** @var  PDO */
     static $db;
-
+    
     public function __construct($params = [])
     {
         $className = get_called_class();
@@ -17,33 +17,27 @@ abstract class Object{
                 $this->$param_name = $param_value;
         }
     }
-
-    public function __get($name)
-    {
-        if (property_exists($this,$name))
-            return $this->name;
-
-        return 'Not exist';
+    
+    /**
+     * Заполнить объект свойствами
+     */
+    public function addData($className) {
+        foreach ($_POST as $param_name => $param_value){
+                if (property_exists($className, $param_name )&&(isset($param_name)))
+                    $ChangingListModel->$param_name = strip_tags($param_value);
+            }
     }
-
-    public function __set($name, $value)
-    {
-        if (property_exists($this,$name))
-            $this->$name = $value;
-        return 'Not exist';
-    }
-
+    
+    /**
+     * Редирект JS на заданный URL
+     */
+     
     static function redirect($URL){
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
 
-    abstract static function TableName();
-
-    /**
-     * @param integer $id
-     * @return
-     */
+  
 
 }
 

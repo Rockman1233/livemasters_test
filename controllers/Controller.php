@@ -13,21 +13,28 @@ abstract class Controller {
     public $twig;
     static $template;
 
-
-    function __construct()
-
-    {
+    /**
+     * Конструктор
+     */
+    function __construct() {
         $this->loader = new Twig_Loader_Filesystem('views');
         //$this->twig = new Twig_Environment($this->loader, array('cache' => 'cache'));
         $this->twig = new Twig_Environment($this->loader);
         self::$template = $this->twig->loadTemplate('index.php');
     }
-
-    public function niceLook($obj){
+    
+    /**
+     * 
+     * Красиввый вывод объекта (служебная)
+     */
+    
+    public function niceLook($obj) {
         echo '<pre>';
         print_r($obj);
-        die();
+        //die();
     }
+    
+    
 
 
 

@@ -1,8 +1,8 @@
 <?php
 
-$dsn = 'mysql:host=localhost;dbname=exam_projects';
+$dsn = 'mysql:host=localhost;dbname=exam_project';
 $user = 'root';
-$password = 'root';
+$password = '';
 
 try {
     Object::$db = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);

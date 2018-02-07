@@ -11,16 +11,12 @@ class Role extends Object {
 
     public $role_id;
     public $role_name;
+    
+    /**
+     * Создать новую должноссть (ролЬ)
+     */
 
-
-    static function TableName()
-    {
-        return 'exam_roles';
-    }
-
-
-    public function saveRole()
-    {
+    public function saveRole() {
         $prepare = self::$db->prepare(
             'INSERT INTO exam_roles 
                         (role_name 
@@ -32,13 +28,19 @@ class Role extends Object {
             array('name' => $this->role_name
             ));
     }
+    
+    /**
+     * Показать все должности
+     */
 
-
-    static function showAll()
-        {
-            $oQuery = Object::$db->query('SELECT * FROM `exam_roles`');
+    static function showAll() {
+            $oQuery = Object::$db->query('SELECT exam_roles.role_id, exam_roles.role_name FROM `exam_roles`');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
         }
+        
+    /**
+     * Сменить название должности
+     */    
 
     public function changeName() {
 
@@ -51,16 +53,24 @@ class Role extends Object {
         return $prepare->execute(array('name' => $this->role_name, 'id' => $this->role_id));
 
     }
-
-    public static function findById($id){
+    
+    /**
+     * Найти должность по ID
+     */
+    
+    public static function findById($id) {
 
         /** @var Object $class */
         $class = get_called_class();
-        $oQuery = Object::$db->prepare("SELECT * FROM exam_roles WHERE role_id=:need_id");
+        $oQuery = Object::$db->prepare("SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles WHERE role_id=:need_id");
         $oQuery->execute(['need_id' => $id]);
         $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
         return $aRes? new $class($aRes):null;
     }
+    
+    /**
+     * Удалить должность по ID
+     */
 
     static function delete($id) {
         $prepare = self::$db->prepare(

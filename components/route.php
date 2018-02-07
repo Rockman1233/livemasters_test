@@ -41,7 +41,7 @@ class Route
 	public function start() {
 
         $uri = $this->getURL();
-        echo "Строка запроса - ".$uri;
+        //echo "Строка запроса - ".$uri;
 
         foreach ($this->aRouts as $uriPattern => $path) {
             if (preg_match("~$uriPattern~",$uri)) {
@@ -70,8 +70,8 @@ class Route
 
                 $parametrs[] = $_GET['sort'];
 
-                echo '<br> Контроллер - '.$controllerName;
-                echo '<br> Метод контроллера - '.$actionName;
+                //echo '<br> Контроллер - '.$controllerName;
+                //echo '<br> Метод контроллера - '.$actionName;
 
                 //connect files
                 $controllerFile = './controllers/'.$controllerName.'.php';

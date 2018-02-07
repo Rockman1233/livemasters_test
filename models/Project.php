@@ -12,15 +12,11 @@ class Project extends Object {
     public $project_id;
     public $project_name;
 
-
-    static function TableName()
-    {
-        return 'exam_projects';
-    }
-
-
-    public function saveProject()
-    {
+    /**
+     * Создать проект
+     */
+    
+    public function saveProject() {
         $prepare = self::$db->prepare(
             'INSERT INTO exam_projects 
                         (project_name 
@@ -32,15 +28,21 @@ class Project extends Object {
             array('name' => $this->project_name
             ));
     }
+    
+    /**
+     * Показать все проекты
+     */
+    
+    static function showAll() {
 
-
-    static function showAll()
-        {
-
-            $oQuery = Object::$db->query('SELECT * FROM `exam_projects`');
+            $oQuery = Object::$db->query('SELECT exam_projects.project_id, exam_projects.project_name FROM `exam_projects`');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
-        }
-
+    }
+    
+    /**
+     * Сменить имя проекта
+     */  
+    
     public function changeName() {
 
         $prepare = self::$db->prepare(
@@ -52,17 +54,24 @@ class Project extends Object {
         $prepare->execute(array('name' => $this->project_name, 'id' => $this->project_id));
 
     }
+    
+    /**
+     * Найти проект по ID
+     */
 
-    public static function findById($id){
+    public static function findById($id) {
 
         /** @var Object $class */
         $class = get_called_class();
-
-        $oQuery = Object::$db->prepare("SELECT * FROM exam_projects WHERE project_id=:need_id");
+        $oQuery = Object::$db->prepare("SELECT exam_projects.project_id, exam_projects.project_name FROM exam_projects WHERE project_id=:need_id");
         $oQuery->execute(['need_id' => $id]);
         $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
         return $aRes? new $class($aRes):null;
     }
+    
+    /**
+     * Удалить проект по ID
+     */
 
     static function delete($id) {
 

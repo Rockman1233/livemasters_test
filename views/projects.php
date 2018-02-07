@@ -10,7 +10,7 @@
     -->
 </div>
 <hr>
-<div class="table-responsive">
+<div class="table-responsive" id="content-tabel">
     <table class="table">
         <thead>
         <tr>
@@ -25,12 +25,12 @@
         </thead>
         <tbody>
         {% for project in projects %}
-        <form action="projects" method="post">
-        <input type="hidden" value="{{ project.ep_id }}" name="ep_id">
-
-        <tr>
+        <tr id="row-{{ project.ep_id }}" data-id="{{ project.ep_id }}" class="js-form">
+            <input type="hidden" value="{{ project.ep_id }}" name="ep_id">
             <!-- Projects -->
-            <td>{{ project.ep_id }}</td>
+            <td>
+                {{ project.ep_id }}
+            </td>
             <td>
                 <div class="form-group">
                     <select class="form-control" name="project_id">
@@ -81,9 +81,11 @@
                     </div>
                 </div>
             </td>
-            <td><button type="submit" class="btn btn-primary">Confirm</button> <button data-id="{{ project.ep_id }}" class="btn btn-danger">Delete</button></td>
+            <td>
+                <button class="btn btn-primary js-submit" data-id="{{ project.ep_id }}">Confirm</button>
+                <input type="button" data-id="{{ project.ep_id }}" class="btn btn-danger js-delete" value="Delete">
+            </td>
         </tr>
-        </form>
         {% endfor %}
         </tbody>
     </table>
@@ -102,7 +104,7 @@
         </tr>
         </thead>
         <tbody>
-        <form method="POST" id="formx" action="javascript:void(null);" onsubmit="call()">
+        <form method="POST" id="formOfNewRow" action="javascript:void(null);" onsubmit="call()">
         <tr>
             <td>
                 <div class="form-group">

@@ -8,6 +8,13 @@
     display:none;
 }
 
+.deleteObject{
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+    margin-top: 10px;
+}
 .index-content a:hover{
     color:black;
     text-decoration:none;

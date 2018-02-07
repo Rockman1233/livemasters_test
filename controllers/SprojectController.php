@@ -15,13 +15,14 @@ include_once('./models/Role.php');
 
 
 
-class SprojectController extends Controller
-{
+class SprojectController extends Controller {
+    
+    /**
+     * Инициализация
+     */
 
-
-    public function actionIndex()
-    {
-        if($_POST){
+    public function actionIndex() {
+        if($_POST['project_id']){
             $arrayOfProjects = MainList::findByDates(trim($_POST['project_id']),trim($_POST['dt_begin']),trim($_POST['dt_end']) );
             $chosenProject = $arrayOfProjects[0]['project_name'];
         }
@@ -39,9 +40,6 @@ class SprojectController extends Controller
             'deals' => $arrayOfProjects,
             'TheProject' => $chosenProject
         ));
-
-    }
-    public function sameNameAndRole($array){
 
     }
 

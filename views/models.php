@@ -15,7 +15,7 @@
                             <div class="hide-when-unhover-one">
                                 <p class="text-center">Введите новое название для проекта:</p>
                                 <input type="text" name="project_name" class="center-block">
-                                <p class="text-center">Удалить выбранный проект: <input type="checkbox" name="delete" class="form-check-input"></p>
+                                <label class="deleteObject">Удалить проект:  <input type="checkbox" name="delete" class="form-check-input"></label>
                                 <input type="submit" hidden>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <div class="hide-when-unhover-two">
                                 <p class="text-center">Введите новое имя сотрудника</p>
                                 <input type="text" name="worker_lastname" class="center-block">
-                                <p class="text-center">Удалить выбранного сотрудника: <input type="checkbox" name="delete" class="form-check-input"></p>
+                                <label class="deleteObject">Удалить выбранного сотрудника: <input type="checkbox" name="delete" class="form-check-input"></label>
                                 <input type="submit" hidden>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <div class="hide-when-unhover-three">
                                 <p class="text-center">Введите новую должность</p>
                                 <input type="text" name="role_name" class="center-block">
-                                <p class="text-center">Удалить должность: <input type="checkbox" name="delete3" class="form-check-input"></p>
+                                <label class="deleteObject">Удалить должность: <input type="checkbox" name="delete3" class="form-check-input"></label>
                                 <input type="submit" hidden>
                             </div>
                         </div>

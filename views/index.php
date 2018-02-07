@@ -9,7 +9,8 @@
     <script src="./vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js"></script>
     <script src="./assets/bootstrap-datepicker-1/locales/bootstrap-datepicker.ru.min.js"></script>
-    <!-- Большой жирный костыль :(-->
+    <script src="./assets/custom.js"></script>
+    
 
 
     <title>{{ title }}</title>
@@ -53,146 +54,6 @@
     {% include "workersSummary.php" %}
     {% endif %}
 </div>
-
-<!----- SCRIPTS -------->
-
-<!-- ajax (delete row)-->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.btn-danger').click(function () {
-            var id = $(this).attr('data-id');
-            $.ajax({
-                url: 'deleteline',
-                type: 'POST',
-                data: {'delete_line_with_id': id},
-                success: function (result) {
-                    alert("Задание удалено");
-                }
-            });
-
-        })
-    })
-</script>
-
-<!-- ajax (new row)-->
-<script type="text/javascript" language="javascript">
-    function call() {
-        var msg   = $('#formx').serialize();
-        $.ajax({
-            type: 'POST',
-            url: 'addnew',
-            data: msg,
-            success: function() {
-                window.location.reload();
-            },
-            error:  function(){
-                alert('Возникла ошибка');
-            }
-        });
-    }
-
-</script>
-
-
-<!-- ajax (confirm edit)-->
-
-<script type="text/javascript" language="javascript">
-    function editName() {
-        var msg   = $('.newName').serialize();
-        $.ajax({
-            type: 'POST',
-            url: 'projname',
-            data: msg,
-            success: function() {
-                window.location.reload();
-            }
-
-        });
-    }
-</script>
-
-<script type="text/javascript" language="javascript">
-    function editWorker() {
-        var msg   = $('.newWorker').serialize();
-        $.ajax({
-            type: 'POST',
-            url: 'workername',
-            data: msg,
-            success: function() {
-                window.location.reload();
-            }
-
-        });
-    }
-</script>
-
-<script type="text/javascript" language="javascript">
-    function editRole() {
-        var msg   = $('.newRole').serialize();
-        $.ajax({
-            type: 'POST',
-            url: 'rolename',
-            data: msg,
-            success: function() {
-                window.location.reload();
-            }
-
-        });
-    }
-</script>
-
-
-
-<!-- datepickers -->
-<script>
-    $(function () {
-        $('.datetimepicker1').datepicker({
-            locale: 'ru',
-            format: 'yyyy-mm-dd',
-            autoclose: true
-            //minDate: Date()
-        });
-    });
-</script>
-<script>
-    $(function () {
-        $('.datetimepicker2').datepicker({
-            locale: 'ru',
-            format: 'yyyy-mm-dd',
-            autoclose: true
-            //minDate: Date()
-        });
-    });
-</script>
-
-<!-- toggle input -->
-<script>
-    $(document).ready(function() {
-        $('#card-1').hover(function(e) {
-            e.preventDefault();
-            $(".hide-when-unhover-one").toggle(500);
-        })
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#card-2').hover(function(e) {
-            e.preventDefault();
-            $(".hide-when-unhover-two").toggle(500);
-        })
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#card-3').hover(function(e) {
-            e.preventDefault();
-            $(".hide-when-unhover-three").toggle(500);
-        })
-    });
-</script>
-
-<!-- toggle table -->
-
 
 </body>
 </html>

@@ -16,11 +16,19 @@ include_once('./models/Role.php');
 
 
 class MainController extends Controller {
-
+    
+    /**
+     *сообщение об ошибке
+     */
+    
     static public $error;
+    
+    /**
+     * Инициализация
+     */
 
-    public function actionIndex($sort)
-    {
+    public function actionIndex($sort) {
+        
         $title = 'CRUD интерфейс управления проектами';
         $projects = MainList::showAll($sort);
         $workers = CompanyWorker::showAll();
@@ -37,29 +45,46 @@ class MainController extends Controller {
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects
         ));
-        if($_POST){
-            $ChangingListModel = MainList::findById($_POST['ep_id']);
-            $className = 'MainList';
-            //set POsT parameters to model
-            foreach ($_POST as $param_name => $param_value){
-                if (property_exists($className, $param_name )&&(isset($param_name)))
-                    $ChangingListModel->$param_name = strip_tags($param_value);
-
-            }
-            $ChangingListModel->saveChanges();
-            Object::redirect('./projects');
-        }
+        
 
     }
+    
+    public function actionSubmit() {
+        
+        $ChangingListModel = MainList::findById($_POST['ep_id']);
+        //установить POsT параметры в модель
+        foreach ($_POST as $param_name => $param_value) {
+            if (property_exists('MainList', $param_name )&&(isset($param_name)))
+                $ChangingListModel->$param_name = strip_tags($param_value);
+        }
+        $this->_toJson(['isError' => $ChangingListModel->saveChanges()]);
+    }
+    
+    /**
+     * Конвертация в JSON
+     */
+    
+    private function _toJson($value) {
+        echo json_encode($value);
+        exit;
+    }
+    
+    /**
+     * Удаление записи
+     */
 
-    public function actionDeleteline(){
+    public function actionDeleteline() {
         MainList::delete($_POST['delete_line_with_id']);
     }
-
-    public function actionAddnew(){
+    
+    /**
+     * Добавить запись
+     */
+    
+    public function actionAddnew() {
         $NewListModel = new MainList();
         $className = 'MainList';
-        //set POsT parametrs to model
+        //установить POsT параметры в модель
         foreach ($_POST as $param_name => $param_value)
         {
             if (property_exists($className, $param_name ))

@@ -62,6 +62,11 @@
 
             </tbody>
         </table>
+        {% for worker in WorkWith %}
+        <blockquote class="blockquote">
+        <p class="mb-0">Работал вместе с {{ worker.worker_lastname }} ({{ worker.role_name }}) над проектом {{ worker.project_name }} в промежутке с {{ worker.dt_begin }} по {{ worker.dt_end }} </p>
+        </blockquote>
+        {% endfor %}
     </div>
 </div>
 {% endif %}
