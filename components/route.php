@@ -5,22 +5,18 @@
 > цепляет классы контроллеров и моделей;
 > создает экземпляры контролеров страниц и вызывает действия этих контроллеров.
 */
-class Route
-{
-	private $aRouts = [
 
-	];
+class Route {
+    private $aRouts = [];
 
-	public function __construct()
-	{
-		
-		$routes = './config/routes.php';
-		$this->aRouts = include($routes);
+    public function __construct() {
 
-	}
+            $routes = './config/routes.php';
+            $this->aRouts = include($routes);
 
-    private function getURL()
-    {
+    }
+
+    private function getURL() {
         //получаем строку запроса
         if (!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
@@ -29,7 +25,7 @@ class Route
         return null;
     }
 
-    public function niceLook($obj){
+    public function niceLook($obj) {
         echo '<pre>';
         print_r($obj);
         echo '</pre>';
@@ -38,7 +34,7 @@ class Route
     }
 
 
-	public function start() {
+    public function start() {
 
         $uri = $this->getURL();
         //echo "Строка запроса - ".$uri;
@@ -51,6 +47,7 @@ class Route
                 //вырезаем ненужную часть урла
                 $uri = strtok($uri, '?');
                 $cutDir = preg_split("~/~", $uri);
+                //берем последнюю часть адеса
                 $lastFolder = end($cutDir);
                 //black magic (change reg exp)
                 $internalRoute = preg_replace("~$uriPattern~","$path","$lastFolder");
@@ -73,11 +70,10 @@ class Route
                 //echo '<br> Контроллер - '.$controllerName;
                 //echo '<br> Метод контроллера - '.$actionName;
 
-                //connect files
+                //connecting files
                 $controllerFile = './controllers/'.$controllerName.'.php';
 
-                if(file_exists($controllerFile))
-                {
+                if(file_exists($controllerFile)) {
                     include_once $controllerFile;
                 }
 
@@ -85,15 +81,10 @@ class Route
                 $classObject = new $controllerName();
                 $result = call_user_func_array(array($classObject, $actionName), $parametrs);
 
-                if($result != NULL){
+                if($result != NULL) {
                     break;
                 }
-
-
             }
-
         }
-
     }
-    
 }

@@ -43,21 +43,21 @@
     <div class="row">
         <table class="table">
             <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">First date</th>
-                <th scope="col">Deadline</th>
-            </tr>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">First date</th>
+                    <th scope="col">Deadline</th>
+                </tr>
             </thead>
             <tbody>
             {% for deal in deals %}
-            <tr>
-                <th>{{ deal.project_name }}</th>
-                <td>{{ deal.role_name }}</td>
-                <td>{{ deal.dt_begin }}</td>
-                <td>{{ deal.dt_end }}</td>
-            </tr>
+                <tr>
+                    <th>{{ deal.project_name }}</th>
+                    <td>{{ deal.role_name }}</td>
+                    <td>{{ deal.dt_begin }}</td>
+                    <td>{{ deal.dt_end }}</td>
+                </tr>
             {% endfor %}
 
             </tbody>

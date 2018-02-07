@@ -7,15 +7,14 @@
  */
 
 return array(
-
     'projects' => 'main/index',
     'submitform' => 'main/submit',
     'edit' => 'edit/index',
-    'deleteline' => 'main/deleteline',
-    'addnew' => 'main/addnew',
-    'projname' => 'edit/editprojectname',
-    'workername' => 'edit/editprojectworker',
-    'rolename' => 'edit/editprojectrole',
+    'deleteline' => 'main/deleteLine',
+    'addnew' => 'main/addNew',
+    'projname' => 'edit/editProjectName',
+    'workername' => 'edit/editProjectWorker',
+    'rolename' => 'edit/editProjectRole',
     'summ-proj' => 'Sproject/index',
     'summ-workers' => 'Wproject/index',
 );

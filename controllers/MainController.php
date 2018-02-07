@@ -28,7 +28,6 @@ class MainController extends Controller {
      */
 
     public function actionIndex($sort) {
-        
         $title = 'CRUD интерфейс управления проектами';
         $projects = MainList::showAll($sort);
         $workers = CompanyWorker::showAll();
@@ -45,12 +44,9 @@ class MainController extends Controller {
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects
         ));
-        
-
     }
     
     public function actionSubmit() {
-        
         $ChangingListModel = MainList::findById($_POST['ep_id']);
         //установить POsT параметры в модель
         foreach ($_POST as $param_name => $param_value) {
@@ -73,7 +69,7 @@ class MainController extends Controller {
      * Удаление записи
      */
 
-    public function actionDeleteline() {
+    public function actionDeleteLine() {
         MainList::delete($_POST['delete_line_with_id']);
     }
     
@@ -81,21 +77,18 @@ class MainController extends Controller {
      * Добавить запись
      */
     
-    public function actionAddnew() {
+    public function actionAddNew() {
         $NewListModel = new MainList();
         $className = 'MainList';
         //установить POsT параметры в модель
-        foreach ($_POST as $param_name => $param_value)
-        {
+        foreach ($_POST as $param_name => $param_value) {
             if (property_exists($className, $param_name ))
-                if ($param_value == null)
-                {
+                if ($param_value == null) {
                     return self::$error == 'Введите все поля';
                 }
                 else {
                     $NewListModel->$param_name = $param_value;
                 }
-
         }
         return $NewListModel->saveMainList();
     }

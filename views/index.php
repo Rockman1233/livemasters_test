@@ -10,9 +10,6 @@
     <script src="./assets/bootstrap-datepicker-1/js/bootstrap-datepicker.min.js"></script>
     <script src="./assets/bootstrap-datepicker-1/locales/bootstrap-datepicker.ru.min.js"></script>
     <script src="./assets/custom.js"></script>
-    
-
-
     <title>{{ title }}</title>
 </head>
 <body>
@@ -28,7 +25,6 @@
             </button>
             <a class="navbar-brand">LiveMasters Exam</a>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -42,16 +38,19 @@
 
 <div class="container">
     {% if title == "CRUD интерфейс управления проектами" %}
-    {% include "projects.php" %}
+        {% include "projects.php" %}
     {% endif %}
+    
     {% if title == "Управление моделями" %}
-    {% include "models.php" %}
+        {% include "models.php" %}
     {% endif %}
+    
     {% if title == "Сводка проектов" %}
-    {% include "projectsSummary.php" %}
+        {% include "projectsSummary.php" %}
     {% endif %}
+    
     {% if title == "Сводка сотрудников" %}
-    {% include "workersSummary.php" %}
+        {% include "workersSummary.php" %}
     {% endif %}
 </div>
 

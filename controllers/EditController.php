@@ -40,7 +40,7 @@ class EditController extends Controller {
      * Сменить имя проекта
      */
 
-    public function actionEditprojectname() {
+    public function actionEditProjectName() {
         if ($_POST['project_name'] or $_POST['delete']) {
             $ChangingModel = Project::findById(strip_tags($_POST['project_id']));
             $className = 'Project';
@@ -67,7 +67,7 @@ class EditController extends Controller {
      * Сменить имя работника
      */
 
-    public function actionEditprojectworker() {
+    public function actionEditProjectWorker() {
         if ($_POST['worker_lastname'] or $_POST['delete2']) {
             $ChangingModel = CompanyWorker::findById($_POST['worker_id']);
             $className = 'CompanyWorker';
@@ -94,7 +94,7 @@ class EditController extends Controller {
      * Сменить название должности
      */
 
-    public function actionEditprojectrole() {
+    public function actionEditProjectRole() {
         if ($_POST['delete3'] or $_POST['role_name']) {
             $ChangingModel = Role::findById(strip_tags($_POST['role_id']));
             $className = 'Role';

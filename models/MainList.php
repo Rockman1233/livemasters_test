@@ -100,7 +100,6 @@ class MainList extends Object {
      */
 
     public static function findById($id) {
-         
         $class = get_called_class();
         /** @var Object $class */
         $oQuery = Object::$db->prepare("SELECT * FROM exam_projects_workers WHERE ep_id=:need_id");

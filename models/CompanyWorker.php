@@ -74,8 +74,7 @@ class CompanyWorker extends Object {
      * Удалить сотрудника по ID
      */
 
-    static function delete($id)
-    {
+    static function delete($id) {
         $prepare = self::$db->prepare(
             'DELETE FROM exam_workers WHERE worker_id  = :id');
         return $prepare->execute(array('id' => $id));

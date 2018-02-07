@@ -8,7 +8,6 @@
 include_once 'ClassesExt.php';
 
 class Role extends Object {
-
     public $role_id;
     public $role_name;
     
@@ -18,12 +17,7 @@ class Role extends Object {
 
     public function saveRole() {
         $prepare = self::$db->prepare(
-            'INSERT INTO exam_roles 
-                        (role_name 
-                        ) 
-                        VALUES 
-                        (:name)');
-
+            'INSERT INTO exam_roles (role_name) VALUES (:name)');
         $prepare->execute(
             array('name' => $this->role_name
             ));
@@ -34,7 +28,7 @@ class Role extends Object {
      */
 
     static function showAll() {
-            $oQuery = Object::$db->query('SELECT exam_roles.role_id, exam_roles.role_name FROM `exam_roles`');
+            $oQuery = Object::$db->query('SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
         }
         
@@ -43,15 +37,11 @@ class Role extends Object {
      */    
 
     public function changeName() {
-
         $prepare = self::$db->prepare(
-            'UPDATE exam_roles SET
-                        role_name =:name
-                        WHERE
-                        role_id =:id');
-
+            'UPDATE exam_roles 
+             SET role_name =:name
+             WHERE role_id =:id');
         return $prepare->execute(array('name' => $this->role_name, 'id' => $this->role_id));
-
     }
     
     /**
@@ -59,7 +49,6 @@ class Role extends Object {
      */
     
     public static function findById($id) {
-
         /** @var Object $class */
         $class = get_called_class();
         $oQuery = Object::$db->prepare("SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles WHERE role_id=:need_id");
@@ -76,8 +65,5 @@ class Role extends Object {
         $prepare = self::$db->prepare(
             'DELETE FROM exam_roles WHERE role_id  = :id');
         return $prepare->execute(array('id' => $id));
-
     }
-
-
 }
