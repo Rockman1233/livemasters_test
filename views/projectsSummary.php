@@ -5,7 +5,7 @@
             <hr>
             <form class="js-projForm" action="javascript:void(null);" onsubmit="findingProj()">    
                 <div class="form-group">
-                    <select class="form-control" name="project_id">
+                    <select class="form-control" name="projectId">
                         {% for projectName in namesOfProjects %}
                             <option value="{{ projectName.project_id }}">{{ projectName.project_name }}</option>
                         {% endfor %}
@@ -13,14 +13,14 @@
                 </div>
                 <hr>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control" name="dt_begin">
+                    <input type="text" class="form-control" name="dtBegin">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
                 </div>
                 <br>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control" name="dt_end">
+                    <input type="text" class="form-control" name="dtEnd">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>

@@ -18,9 +18,9 @@ abstract class Object {
     }
     
     /**
-     * Заполнить объект свойствами
+     * Заполняет массив объектами
+     * @param type $className
      */
-    
     public function addData($className) {
         foreach ($_POST as $param_name => $param_value){
                 if (property_exists($className, $param_name )&&(isset($param_name)))

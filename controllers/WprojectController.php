@@ -12,24 +12,19 @@ include_once('./models/MainList.php');
 include_once('./models/CompanyWorker.php');
 include_once('./models/Role.php');
 
-
-
-
 class WprojectController extends Controller {
 
     /**
      * Инициализация
      */
-    
     public function actionIndex() {
-        if($_POST['worker_id']) {
-            $arrayOfProjects = MainList::findByDatesForWorker(trim($_POST['worker_id']),trim($_POST['dt_begin']),trim($_POST['dt_end']) );
+        if($_POST['workerId']) {
+            $arrayOfProjects = MainList::findByDatesForWorker(trim($_POST['workerId']),trim($_POST['dtBegin']),trim($_POST['dtEnd']));
             $generalProjects = [];
             foreach ($arrayOfProjects as $project) {
-                array_push($generalProjects, $project['project_id']);
+				$generalProjects[] = $project['project_id'];
             }
-            $genaralProjectsString = implode(' OR project_id = ', $generalProjects);
-            $usersWithSimilarTasks = MainList::findByDatesInCollaboration(trim($_POST['worker_id']), $genaralProjectsString, trim($_POST['dt_begin']), trim($_POST['dt_end']));
+            $usersWithSimilarTasks = MainList::findByDatesInCollaboration(trim($_POST['workerId']), $generalProjects, trim($_POST['dtBegin']), trim($_POST['dtEnd']));
             $chosenWorker = $arrayOfProjects[0]['worker_lastname'];
         }
         $title = 'Сводка сотрудников';

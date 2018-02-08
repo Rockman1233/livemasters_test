@@ -20,11 +20,10 @@ class SprojectController extends Controller {
     /**
      * Инициализация
      */
-
     public function actionIndex() {
-        if($_POST['project_id']){
-            $arrayOfProjects = MainList::findByDates(trim($_POST['project_id']),trim($_POST['dt_begin']),trim($_POST['dt_end']) );
-            $chosenProject = $arrayOfProjects[0]['project_name'];
+        if($_POST['projectId']){
+            $arrayOfProjects = MainList::findByDates(trim($_POST['projectId']),trim($_POST['dtBegin']),trim($_POST['dtEnd']) );
+            $chosenProject = $arrayOfProjects[0]['projectName'];
         }
         $title = 'Сводка проектов';
         $projects = MainList::showAll($sort=1);

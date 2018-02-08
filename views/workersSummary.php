@@ -1,14 +1,11 @@
 <div class="container">
     <div class="row">
-
         <div class="col-md-8 col-md-offset-2">
-
             <h2>Выберете сотрудника</h2>
             <hr>
             <form class="js-projForm" action="javascript:void(null);" onsubmit="findingProjByWorker()">    
-
                 <div class="form-group">
-                    <select class="form-control" name="worker_id">
+                    <select class="form-control" name="workerId">
                         {% for worker in workers %}
                         <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>
                         {% endfor %}
@@ -16,14 +13,14 @@
                 </div>
                 <hr>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control" name="dt_begin">
+                    <input type="text" class="form-control" name="dtBegin">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
                 </div>
                 <br>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control" name="dt_end">
+                    <input type="text" class="form-control" name="dtEnd">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
@@ -37,7 +34,6 @@
 
     </div>
 </div>
-
 <div class="container js-blockOfProjects" id="toggle-table">
     <h1>{{ TheWorker }}</h1>
     <div class="row">
@@ -59,7 +55,6 @@
                     <td>{{ deal.dt_end }}</td>
                 </tr>
             {% endfor %}
-
             </tbody>
         </table>
         {% for worker in WorkWith %}

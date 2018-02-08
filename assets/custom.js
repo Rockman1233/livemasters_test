@@ -53,7 +53,7 @@ jQuery(function($) {
  */
     
 function call() {
-        var msg   = $('#formOfNewRow').serialize();
+        var msg = $('#formOfNewRow').serialize();
         $.ajax({
             type: 'POST',
             url: 'addnew',
@@ -80,7 +80,6 @@ function call() {
 						autoclose: true
 						//minDate: Date()
 					});
-					
                 }  
             });  
         }  
@@ -95,7 +94,7 @@ function call() {
  */  
 
 function editName() {
-        var msg   = $('.js-newName').serialize();
+        var msg = $('.js-newName').serialize();
         $.ajax({
             type: 'POST',
             url: 'projname',

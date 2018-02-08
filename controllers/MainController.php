@@ -18,15 +18,15 @@ include_once('./models/Role.php');
 class MainController extends Controller {
     
     /**
-     *сообщение об ошибке
+     * сообщение об ошибке
+     * @var string 
      */
-    
     static public $error;
     
     /**
      * Инициализация
+     * @param integer $sort индекс сортировки
      */
-
     public function actionIndex($sort) {
         $title = 'CRUD интерфейс управления проектами';
         $projects = MainList::showAll($sort);
@@ -46,8 +46,11 @@ class MainController extends Controller {
         ));
     }
     
+    /**
+     * Подтверждение изменений записи задания
+     */
     public function actionSubmit() {
-        $ChangingListModel = MainList::findById($_POST['ep_id']);
+        $ChangingListModel = MainList::findById($_POST['epId']);
         //установить POsT параметры в модель
         foreach ($_POST as $param_name => $param_value) {
             if (property_exists('MainList', $param_name )&&(isset($param_name)))
@@ -58,8 +61,8 @@ class MainController extends Controller {
     
     /**
      * Конвертация в JSON
+     * @param array $value параметр для конвертации
      */
-    
     private function _toJson($value) {
         echo json_encode($value);
         exit;
@@ -67,16 +70,16 @@ class MainController extends Controller {
     
     /**
      * Удаление записи
+     * @return boolean
      */
-
     public function actionDeleteLine() {
-        MainList::delete($_POST['delete_line_with_id']);
+        return MainList::delete($_POST['delete_line_with_id']);
     }
     
     /**
      * Добавить запись
+     * @return boolean
      */
-    
     public function actionAddNew() {
         $NewListModel = new MainList();
         $className = 'MainList';
@@ -92,6 +95,4 @@ class MainController extends Controller {
         }
         return $NewListModel->saveMainList();
     }
-
-
 }

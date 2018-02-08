@@ -24,10 +24,9 @@ abstract class Controller {
     }
     
     /**
-     * 
-     * Красиввый вывод объекта (служебная)
+     * Красивый вывод объекта (служебная)
+     * @return type $obj
      */
-    
     public function niceLook($obj) {
         echo '<pre>';
         print_r($obj);

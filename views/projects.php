@@ -26,14 +26,14 @@
         <tbody>
         {% for project in projects %}
         <tr id="row-{{ project.ep_id }}" data-id="{{ project.ep_id }}" class="js-form">
-            <input type="hidden" value="{{ project.ep_id }}" name="ep_id">
+            <input type="hidden" value="{{ project.ep_id }}" name="epId">
             <!-- Projects -->
             <td>
                 {{ project.ep_id }}
             </td>
             <td>
                 <div class="form-group">
-                    <select class="form-control" name="project_id">
+                    <select class="form-control" name="projectId">
                             <option value="{{ project.project_id }}" selected hidden>{{ project.project_name }}</option>
                         {% for projectName in namesOfProjects %}
                             <option value="{{ projectName.project_id }}">{{ projectName.project_name }}</option>
@@ -44,7 +44,7 @@
             <!-- Workers -->
             <td>
                 <div class="form-group">
-                    <select class="form-control" name="worker_id">
+                    <select class="form-control" name="workerId">
                         <option value="{{ project.worker_id }}" selected hidden>{{ project.worker_lastname }}</option>
                         {% for worker in workers %}
                             <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>
@@ -55,7 +55,7 @@
             <!-- Roles -->
             <td>
                 <div class="form-group">
-                    <select class="form-control" name="role_id">
+                    <select class="form-control" name="roleId">
                         <option value="{{ project.role_id }}" selected hidden>{{ project.role_name }}</option>
                         {% for role in roles %}
                             <option value="{{ role.role_id }}">{{ role.role_name }}</option>
@@ -66,7 +66,7 @@
             <!-- dt_begin -->
             <td>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control" name="dt_begin" value="{{ project.dt_begin }}">
+                    <input type="text" class="form-control" name="dtBegin" value="{{ project.dt_begin }}">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
@@ -75,7 +75,7 @@
             <!-- dt_end -->
             <td>
                 <div class="input-group date datetimepicker2" data-provide="datepicker" id="datetimepicker2">
-                    <input type="text" class="form-control" name="dt_end" value="{{ project.dt_end }}">
+                    <input type="text" class="form-control" name="dtEnd" value="{{ project.dt_end }}">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
@@ -108,7 +108,7 @@
         <tr>
             <td>
                 <div class="form-group">
-                    <select class="form-control" name="project_id">
+                    <select class="form-control" name="projectId">
                         <option value="{{ project.project_id }}" selected hidden>{{ project.project_name }}</option>
                         {% for projectName in namesOfProjects %}
                         <option value="{{ projectName.project_id }}">{{ projectName.project_name }}</option>
@@ -118,7 +118,7 @@
             </td>
             <td>
                 <div class="form-group">
-                    <select class="form-control" name="worker_id">
+                    <select class="form-control" name="workerId">
                         <option value="{{ project.worker_id }}" selected hidden>{{ project.worker_lastname }}</option>
                         {% for worker in workers %}
                         <option value="{{ worker.worker_id }}">{{ worker.worker_lastname }}</option>
@@ -128,7 +128,7 @@
             </td>
             <td>
                 <div class="form-group">
-                    <select class="form-control" name="role_id">
+                    <select class="form-control" name="roleId">
                         <option value="{{ project.role_id }}" selected hidden>{{ project.role_name }}</option>
                         {% for role in roles %}
                         <option value="{{ role.role_id }}">{{ role.role_name }}</option>
@@ -138,7 +138,7 @@
             </td>
             <td>
                 <div class="input-group date datetimepicker1" data-provide="datepicker" id="datetimepicker1">
-                    <input type="text" class="form-control dt_begin" name="dt_begin" value="{{ project.dt_begin }}">
+                    <input type="text" class="form-control dt_begin" name="dtBegin" value="{{ project.dt_begin }}">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>
@@ -146,7 +146,7 @@
             </td>
             <td>
                 <div class="input-group date datetimepicker2" data-provide="datepicker" id="datetimepicker2">
-                    <input type="text" class="form-control" name="dt_end" value="{{ project.dt_end }}">
+                    <input type="text" class="form-control" name="dtEnd" value="{{ project.dt_end }}">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </div>

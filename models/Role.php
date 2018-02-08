@@ -8,25 +8,25 @@
 include_once 'ClassesExt.php';
 
 class Role extends Object {
-    public $role_id;
-    public $role_name;
+    public $roleId;
+    public $roleName;
     
     /**
-     * Создать новую должноссть (ролЬ)
+     * Создать новую должноссть (роль)
+     * @return boolean 
      */
-
     public function saveRole() {
         $prepare = self::$db->prepare(
             'INSERT INTO exam_roles (role_name) VALUES (:name)');
-        $prepare->execute(
-            array('name' => $this->role_name
+        return $prepare->execute(
+            array('name' => $this->roleName
             ));
     }
     
     /**
      * Показать все должности
+     * @return array все должности
      */
-
     static function showAll() {
             $oQuery = Object::$db->query('SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -34,20 +34,21 @@ class Role extends Object {
         
     /**
      * Сменить название должности
-     */    
-
+     * @return boolean
+     */
     public function changeName() {
         $prepare = self::$db->prepare(
             'UPDATE exam_roles 
              SET role_name =:name
              WHERE role_id =:id');
-        return $prepare->execute(array('name' => $this->role_name, 'id' => $this->role_id));
+        return $prepare->execute(array('name' => $this->roleName, 'id' => $this->roleId));
     }
     
     /**
      * Найти должность по ID
+     * @param int $id ID роли
+     * @return obj роль
      */
-    
     public static function findById($id) {
         /** @var Object $class */
         $class = get_called_class();
@@ -59,8 +60,9 @@ class Role extends Object {
     
     /**
      * Удалить должность по ID
+     * @param int $id ID роли   
+     * @return boolean  
      */
-
     static function delete($id) {
         $prepare = self::$db->prepare(
             'DELETE FROM exam_roles WHERE role_id  = :id');

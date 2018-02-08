@@ -11,13 +11,13 @@ include_once 'ClassesExt.php';
 
 class CompanyWorker extends Object {
 
-    public $worker_id;
-    public $worker_lastname;
+    public $workerId;
+    public $workerLastname;
 
     /**
      * Сохранить работника
+     * @return boolean
      */
-    
     public function saveworker() {
         $prepare = self::$db->prepare(
             'INSERT INTO exam_workers 
@@ -25,15 +25,15 @@ class CompanyWorker extends Object {
                         VALUES 
                         (:name)');
 
-        $prepare->execute(
-            array('name' => $this->worker_lastname
+        return $prepare->execute(
+            array('name' => $this->workerLastname
             ));
     }
 
     /**
-     * Показать всех сотружников
+     * Показать всех сотрудников
+     * @return array Все сотрудники
      */
-    
     static function showAll() {
             $oQuery = Object::$db->query('SELECT exam_workers.worker_id, exam_workers.worker_lastname FROM `exam_workers`');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -41,8 +41,8 @@ class CompanyWorker extends Object {
         
     /**
      * Поменять имя текущего сотрудника
+     * @return boolean
      */
-        
     public function changeName() {
 
         $prepare = self::$db->prepare(
@@ -51,14 +51,14 @@ class CompanyWorker extends Object {
                         WHERE
                         worker_id =:id');
 
-        $prepare->execute(array('name' => $this->worker_lastname, 'id' => $this->worker_id));
+        return $prepare->execute(array('name' => $this->workerLastname, 'id' => $this->workerId));
 
     }
     
     /**
      * Найти сотрудника по ID
+     * @param integer $id ID сотрудника
      */
-
     public static function findById($id) {
 
         /** @var Object $class */
@@ -72,8 +72,8 @@ class CompanyWorker extends Object {
     
     /**
      * Удалить сотрудника по ID
+     * @param integer $id ID сотрудника
      */
-
     static function delete($id) {
         $prepare = self::$db->prepare(
             'DELETE FROM exam_workers WHERE worker_id  = :id');
