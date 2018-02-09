@@ -6,20 +6,28 @@
  * Time: 13:51
  */
 
-include_once('Controller.php');
-include_once('./models/Project.php');
-include_once('./models/MainList.php');
-include_once('./models/CompanyWorker.php');
-include_once('./models/Role.php');
+require_once('Controller.php');
+require_once('./models/Project.php');
+require_once('./models/MainList.php');
+require_once('./models/CompanyWorker.php');
+require_once('./models/Role.php');
 
+/**
+ * Контрллер страницы вывода проектов конкретного сотрыдника 
+ */
 class WprojectController extends Controller {
+	
+	/**
+	 * @var str Тайтл
+	 */
+	const title = 'Сводка сотрудников';
 
     /**
      * Инициализация
      */
     public function actionIndex() {
         if($_POST['workerId']) {
-            $arrayOfProjects = MainList::findByDatesForWorker(trim($_POST['workerId']),trim($_POST['dtBegin']),trim($_POST['dtEnd']));
+            $arrayOfProjects = MainList::findByDatesForWorker(trim($_POST['workerId']), trim($_POST['dtBegin']), trim($_POST['dtEnd']));
             $generalProjects = [];
             foreach ($arrayOfProjects as $project) {
 				$generalProjects[] = $project['project_id'];
@@ -27,14 +35,11 @@ class WprojectController extends Controller {
             $usersWithSimilarTasks = MainList::findByDatesInCollaboration(trim($_POST['workerId']), $generalProjects, trim($_POST['dtBegin']), trim($_POST['dtEnd']));
             $chosenWorker = $arrayOfProjects[0]['worker_lastname'];
         }
-        $title = 'Сводка сотрудников';
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
-        $base_url = $GLOBALS['base_dir'];
         echo self::$template->render(array(
-            'url' => $base_url,
-            'title' => $title,
+            'title' => self::title,
             'workers' => $workers,
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects,

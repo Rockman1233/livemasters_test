@@ -6,32 +6,36 @@
  * Time: 13:51
  */
 
-include_once('Controller.php');
-include_once('./models/Project.php');
-include_once('./models/MainList.php');
-include_once('./models/CompanyWorker.php');
-include_once('./models/Role.php');
+require_once('Controller.php');
+require_once('./models/Project.php');
+require_once('./models/MainList.php');
+require_once('./models/CompanyWorker.php');
+require_once('./models/Role.php');
 
-
-
-
+/**
+ * Контроллер страницы вывода сотрудников работающих над проектом
+ */
 class SprojectController extends Controller {
     
-    /**
+	/**
+	 * @var str Тайтл
+	 */
+	const title = 'Сводка проектов';
+
+	/**
      * Инициализация
      */
     public function actionIndex() {
         if($_POST['projectId']){
-            $arrayOfProjects = MainList::findByDates(trim($_POST['projectId']),trim($_POST['dtBegin']),trim($_POST['dtEnd']) );
+            $arrayOfProjects = MainList::findByDates(trim($_POST['projectId']), trim($_POST['dtBegin']), trim($_POST['dtEnd']) );
             $chosenProject = $arrayOfProjects[0]['projectName'];
         }
-        $title = 'Сводка проектов';
         $projects = MainList::showAll($sort=1);
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
         echo self::$template->render(array(
-            'title' => $title,
+            'title' => self::title,
             'workers' => $workers,
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects,

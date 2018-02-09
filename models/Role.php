@@ -5,10 +5,16 @@
  * Date: 30.10.17
  * Time: 11:57
  */
-include_once 'ClassesExt.php';
+require_once 'ClassesExt.php';
 
+/**
+ * Модель должности
+ */
 class Role extends Object {
+	
+	/** $roleId - ID должности*/
     public $roleId;
+	/** $roleName - Название должности*/
     public $roleName;
     
     /**
@@ -16,11 +22,8 @@ class Role extends Object {
      * @return boolean 
      */
     public function saveRole() {
-        $prepare = self::$db->prepare(
-            'INSERT INTO exam_roles (role_name) VALUES (:name)');
-        return $prepare->execute(
-            array('name' => $this->roleName
-            ));
+        $prepare = self::$db->prepare('INSERT INTO exam_roles (role_name) VALUES (:name)');
+        return $prepare->execute(['name' => $this->roleName]);
     }
     
     /**
@@ -30,7 +33,7 @@ class Role extends Object {
     static function showAll() {
             $oQuery = Object::$db->query('SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles');
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
-        }
+    }
         
     /**
      * Сменить название должности
@@ -41,31 +44,31 @@ class Role extends Object {
             'UPDATE exam_roles 
              SET role_name =:name
              WHERE role_id =:id');
-        return $prepare->execute(array('name' => $this->roleName, 'id' => $this->roleId));
+        return $prepare->execute(['name' => $this->roleName, 'id' => $this->roleId]);
     }
     
     /**
      * Найти должность по ID
-     * @param int $id ID роли
+     * @param int $id - ID роли
      * @return obj роль
      */
     public static function findById($id) {
         /** @var Object $class */
         $class = get_called_class();
-        $oQuery = Object::$db->prepare("SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles WHERE role_id=:need_id");
+        $oQuery = Object::$db->prepare('SELECT exam_roles.role_id, exam_roles.role_name FROM exam_roles WHERE role_id=:need_id');
         $oQuery->execute(['need_id' => $id]);
         $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
-        return $aRes? new $class($aRes):null;
+        return $aRes? new $class($aRes): null;
     }
     
     /**
      * Удалить должность по ID
+	 * 
      * @param int $id ID роли   
      * @return boolean  
      */
     static function delete($id) {
-        $prepare = self::$db->prepare(
-            'DELETE FROM exam_roles WHERE role_id  = :id');
-        return $prepare->execute(array('id' => $id));
+        $prepare = self::$db->prepare('DELETE FROM exam_roles WHERE role_id  = :id');
+        return $prepare->execute(['id' => $id]);
     }
 }

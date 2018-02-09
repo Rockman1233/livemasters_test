@@ -4,11 +4,11 @@
  * User: sergejandrejkin
  * Date: 01.11.17
  * Time: 9:49
+ * Основной контроллер
  */
-
-
 abstract class Controller {
 
+	/** Лоудер */
     public $loader;
     public $twig;
     static $template;
@@ -25,16 +25,11 @@ abstract class Controller {
     
     /**
      * Красивый вывод объекта (служебная)
-     * @return type $obj
+     * @return obj $obj
      */
     public function niceLook($obj) {
         echo '<pre>';
         print_r($obj);
         //die();
     }
-    
-    
-
-
-
 }

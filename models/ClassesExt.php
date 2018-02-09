@@ -1,9 +1,10 @@
 <?php
 
+require_once './config/DBConnect.php';
 
-include './config/DBConnect.php';
-
-
+/**
+ * Задает структуру моделей
+ */
 abstract class Object {
 
     /** @var  PDO */
@@ -12,21 +13,23 @@ abstract class Object {
     public function __construct($params = []) {
         $className = get_called_class();
         foreach ($params as $param_name => $param_value){
-            if (property_exists($className, $param_name ))
-                $this->$param_name = $param_value;
+			if (property_exists($className, $param_name )) {
+				$this->$param_name = $param_value;
+			}
         }
     }
     
     /**
      * Заполняет массив объектами
-     * @param type $className
+     * @param str $className название класса
      */
     public function addData($className) {
-        foreach ($_POST as $param_name => $param_value){
-                if (property_exists($className, $param_name )&&(isset($param_name)))
-                    $ChangingListModel->$param_name = strip_tags($param_value);
-            }
-    }
+        foreach ($_POST as $paramName => $paramValue){
+            if (property_exists($className, $paramName )&& isset($paramName)) {
+                $ChangingListModel->$paramName = strip_tags($paramValue);
+			}
+		}
+	}
 }
 
 

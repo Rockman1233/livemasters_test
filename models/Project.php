@@ -5,10 +5,16 @@
  * Date: 30.10.17
  * Time: 11:57
  */
-include_once 'ClassesExt.php';
+require_once 'ClassesExt.php';
 
+/**
+ * Модель проекта
+ */
 class Project extends Object {
+	
+	/** $projectId - ID проекта*/
     public $projectId;
+	/** $projectName - Имя проекта*/
     public $projectName;
 
     /**
@@ -16,15 +22,9 @@ class Project extends Object {
      * @return boolean
      */
     public function saveProject() {
-        $prepare = self::$db->prepare(
-            'INSERT INTO exam_projects 
-                        (project_name) 
-                        VALUES 
-                        (:name)');
+        $prepare = self::$db->prepare('INSERT INTO exam_projects (project_name) VALUES (:name)');
 
-        return $prepare->execute(
-            array('name' => $this->projectName
-            ));
+        return $prepare->execute(['name' => $this->projectName]);
     }
     
     /**
@@ -43,11 +43,9 @@ class Project extends Object {
     public function changeName() {
         $prepare = self::$db->prepare(
             'UPDATE exam_projects 
-             SET
-             project_name =:name
-             WHERE
-             project_id =:id');
-        return $prepare->execute(array('name' => $this->projectName, 'id' => $this->projectId));
+             SET project_name =:name
+             WHERE project_id =:id');
+        return $prepare->execute(['name' => $this->projectName, 'id' => $this->projectId]);
 
     }
     
@@ -59,7 +57,7 @@ class Project extends Object {
     public static function findById($id) {
         /** @var Object $class */
         $class = get_called_class();
-        $oQuery = Object::$db->prepare("SELECT exam_projects.project_id, exam_projects.project_name FROM exam_projects WHERE project_id=:need_id");
+        $oQuery = Object::$db->prepare('SELECT exam_projects.project_id, exam_projects.project_name FROM exam_projects WHERE project_id=:need_id');
         $oQuery->execute(['need_id' => $id]);
         $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
         return $aRes? new $class($aRes):null;
@@ -71,9 +69,8 @@ class Project extends Object {
      * @return boolean
      */
     static function delete($id) {
-        $prepare = self::$db->prepare(
-            'DELETE FROM exam_projects WHERE project_id  = :id');
-        return $prepare->execute(array('id' => $id));
+        $prepare = self::$db->prepare('DELETE FROM exam_projects WHERE project_id = :id');
+        return $prepare->execute(['id' => $id]);
 
     }
 

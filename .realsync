@@ -1,0 +1,67 @@
+##
+## dkLab RealSync configuration file.
+##
+
+# Local directory to be realtime-replicated.
+local = C:/livemaster/live
+
+# Remote host to replicate to over SSH.
+host = ssh.beta.lmteam.ru:5643
+
+# User to connect to the remote host.
+user = sandreykin
+
+# Directory at the remote host to replicate files to.
+remote = /home/kmuzikantov/test27
+
+# Pathname wildcards to be excluded from the replication.
+# Use "*" for any filename character and "**" for any character,
+# including "/" in pathnames.
+exclude = .realsync
+exclude = CVS
+exclude = .git
+exclude = .svn
+exclude = .hg
+exclude = .cache
+exclude = .idea
+exclude = nbproject
+exclude = ~*
+exclude = *.tmp
+exclude = *.pyc
+exclude = *.swp
+exclude = /zhurnalfoto
+exclude = /yainvoicing
+exclude = /storage
+exclude = /sitemaps
+exclude = /pfoto
+exclude = /masterfoto
+exclude = /masterbanner
+exclude = /itemsets
+exclude = /interviewfoto
+exclude = /images
+exclude = /foto
+exclude = /files
+exclude = /articlefoto
+exclude = /adv
+exclude = /1
+exclude = settings.sphinxql.php
+exclude = settings.php
+exclude = settings.mysql.php
+exclude = settings.memcache.php
+exclude = settings.gearman.php
+exclude = .htaccess
+exclude = /tpl/cache
+exclude = /dist
+
+# To turn off "synchronization ding" sound, set the following to 1.
+nosound = 0
+
+# If you need to load some other config file from here, uncomment
+# and correct the following directive:
+#load = some_file.ini
+
+# Options passed to RSYNC.
+#rsync_options = -rtv --delete --perms=off --chmod=u=rwx,ug=rwx,o=rwx
+
+# Options passed to SSH.
+#ssh_options = -o Compression=yes -o CompressionLevel=9 -o ConnectTimeout=3 -o ServerAliveInterval=2 -o ServerAliveCountMax=4 -o StrictHostKeyChecking=no

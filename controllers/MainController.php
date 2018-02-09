@@ -6,16 +6,21 @@
  * Time: 13:51
  */
 
-include_once('Controller.php');
-include_once('./models/Project.php');
-include_once('./models/MainList.php');
-include_once('./models/CompanyWorker.php');
-include_once('./models/Role.php');
+require_once('Controller.php');
+require_once('./models/Project.php');
+require_once('./models/MainList.php');
+require_once('./models/CompanyWorker.php');
+require_once('./models/Role.php');
 
-
-
-
+/**
+ * Контроллер главной страницы с записями
+ */
 class MainController extends Controller {
+	
+	/**
+	 * @var str Тайтл
+	 */
+	const title = 'CRUD интерфейс управления проектами';
     
     /**
      * сообщение об ошибке
@@ -28,35 +33,35 @@ class MainController extends Controller {
      * @param integer $sort индекс сортировки
      */
     public function actionIndex($sort) {
-        $title = 'CRUD интерфейс управления проектами';
         $projects = MainList::showAll($sort);
         $workers = CompanyWorker::showAll();
         $roles = Role::showAll();
         $namesOfProjects = Project::showAll();
         $base_url = $_SERVER['REQUEST_URI'];
-        echo self::$template->render(array(
+        echo self::$template->render([
             'url' => $base_url,
             'sort' => $sort,
             'error' => self::$error,
-            'title' => $title,
+            'title' => self::title,
             'projects' => $projects,
             'workers' => $workers,
             'roles' => $roles,
             'namesOfProjects' => $namesOfProjects
-        ));
+        ]);
     }
     
     /**
      * Подтверждение изменений записи задания
+	 * @return str JSON
      */
     public function actionSubmit() {
         $ChangingListModel = MainList::findById($_POST['epId']);
         //установить POsT параметры в модель
-        foreach ($_POST as $param_name => $param_value) {
-            if (property_exists('MainList', $param_name )&&(isset($param_name)))
-                $ChangingListModel->$param_name = strip_tags($param_value);
+        foreach ($_POST as $paramName => $paramValue) {
+            if (property_exists('MainList', $paramName )&&(isset($paramName)))
+                $ChangingListModel->$paramName = strip_tags($paramValue);
         }
-        $this->_toJson(['isError' => $ChangingListModel->saveChanges()]);
+        return $this->_toJson(['isError' => $ChangingListModel->saveChanges()]);
     }
     
     /**
@@ -84,13 +89,12 @@ class MainController extends Controller {
         $NewListModel = new MainList();
         $className = 'MainList';
         //установить POsT параметры в модель
-        foreach ($_POST as $param_name => $param_value) {
-            if (property_exists($className, $param_name ))
-                if ($param_value == null) {
+        foreach ($_POST as $paramName => $paramValue) {
+            if (property_exists($className, $paramName ))
+                if ($paramValue == null) {
                     return self::$error == 'Введите все поля';
-                }
-                else {
-                    $NewListModel->$param_name = $param_value;
+                } else {
+                    $NewListModel->$paramName = $paramValue;
                 }
         }
         return $NewListModel->saveMainList();

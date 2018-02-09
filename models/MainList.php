@@ -5,17 +5,24 @@
  * Date: 30.10.17
  * Time: 11:57
  */
-include_once 'ClassesExt.php';
+require_once 'ClassesExt.php';
+
 /**
- * 
+ * Модель записи задания
  */
 class MainList extends Object {
 
+	/** $epId int - ID записи */
     public $epId;
+	/** $projectId - ID проекта*/
     public $projectId;
+	/** $workerId - ID работника*/
     public $workerId;
+	/** $roleId - ID должности*/
     public $roleId;
+	/** $dtBegin - Дата начала работы*/
     public $dtBegin;
+	/** $dtEnd - Дата окончания работы*/
     public $dtEnd;
 
 
@@ -25,17 +32,17 @@ class MainList extends Object {
     public function saveMainList() {
         $prepare = self::$db->prepare(
             'INSERT INTO exam_projects_workers 
-                       (project_id, worker_id, role_id, dt_begin, dt_end) 
-                       VALUES 
-                       (:proj_id,:worker_id,:role_id,:dt_begin,:dt_end)');
+             (project_id, worker_id, role_id, dt_begin, dt_end) 
+             VALUES 
+             (:proj_id,:worker_id,:role_id,:dt_begin,:dt_end)');
 
 
         $prepare->execute(
             ['proj_id' => $this->projectId,
-                  'worker_id' => $this->workerId,
-                  'role_id' => $this->roleId,
-                  'dt_begin' => $this->dtBegin,
-                  'dt_end' => $this->dtEnd
+             'worker_id' => $this->workerId,
+             'role_id' => $this->roleId,
+             'dt_begin' => $this->dtBegin,
+             'dt_end' => $this->dtEnd
             ]);
     }
     
@@ -52,17 +59,17 @@ class MainList extends Object {
             if($sortType == 4){ $model = 'role_name';}
 
             $oQuery = Object::$db->query('SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
-                                                           exam_projects.project_name, exam_projects.project_id, 
-                                                           exam_roles.role_name, exam_roles.role_id, 
-                                                           exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
-                                                           exam_projects_workers.ep_id
-                                                    FROM `exam_projects_workers` 
-                                                    JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
-                                                    JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
-                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id
-                                                    ORDER BY '.$model);
+                                                 exam_projects.project_name, exam_projects.project_id, 
+                                                 exam_roles.role_name, exam_roles.role_id, 
+                                                 exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
+                                                 exam_projects_workers.ep_id
+                                          FROM `exam_projects_workers` 
+                                          JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
+                                          JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
+                                          JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id
+                                          ORDER BY '.$model);
             return $oQuery->fetchAll(PDO::FETCH_ASSOC);
-        }
+    }
         
     /**
      * Сохранить изменения в текущей записи 
@@ -70,17 +77,17 @@ class MainList extends Object {
     public function saveChanges() {
         $prepare = self::$db->prepare(
             'UPDATE exam_projects_workers 
-                       SET project_id = :proj_id, worker_id = :worker_id, role_id = :role_id, dt_begin = :dt_begin, dt_end = :dt_end
-                       WHERE ep_id = :ep_id');
+             SET project_id = :proj_id, worker_id = :worker_id, role_id = :role_id, dt_begin = :dt_begin, dt_end = :dt_end
+             WHERE ep_id = :ep_id');
 
         return !$prepare->execute(
-            array('ep_id' => $this->epId,
-                'proj_id' => $this->projectId,
-                'worker_id' => $this->workerId,
-                'role_id' => $this->roleId,
-                'dt_begin' => $this->dtBegin,
-                'dt_end' => $this->dtEnd
-            ));
+            ['ep_id' => $this->epId,
+             'proj_id' => $this->projectId,
+             'worker_id' => $this->workerId,
+             'role_id' => $this->roleId,
+             'dt_begin' => $this->dtBegin,
+             'dt_end' => $this->dtEnd
+            ]);
     }
     
     /**
@@ -90,8 +97,7 @@ class MainList extends Object {
      */
     static function delete($id) {
         $prepare = self::$db->prepare(
-            'DELETE FROM exam_projects_workers 
-                       WHERE ep_id  = :ep_id');
+            'DELETE FROM exam_projects_workers WHERE ep_id  = :ep_id');
         $prepare->execute(array('ep_id' => $id));
 
     }
@@ -119,19 +125,19 @@ class MainList extends Object {
      */
     public static function findByDates($project, $start, $end) {
         $oQuery = Object::$db->prepare("SELECT exam_workers.worker_lastname, 
-                                                           exam_workers.worker_id, 
-                                                           exam_projects.project_name, exam_projects.project_id, 
-                                                           exam_roles.role_name, exam_roles.role_id, 
-                                                           exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
-                                                           exam_projects_workers.ep_id
-                                                    FROM `exam_projects_workers` 
-                                                    JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
-                                                    JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
-                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
-                                                    WHERE exam_projects_workers.project_id=:need_project 
-                                                    AND exam_projects_workers.dt_begin >=:date_begin 
-                                                    AND exam_projects_workers.dt_end <=:date_end
-                                                    ORDER BY exam_projects_workers.dt_begin");
+                                               exam_workers.worker_id, 
+                                               exam_projects.project_name, exam_projects.project_id, 
+                                               exam_roles.role_name, exam_roles.role_id, 
+                                               exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
+                                               exam_projects_workers.ep_id
+                                       FROM `exam_projects_workers` 
+                                       JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
+                                       JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
+                                       JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
+                                       WHERE exam_projects_workers.project_id=:need_project 
+                                       AND exam_projects_workers.dt_begin >=:date_begin 
+                                       AND exam_projects_workers.dt_end <=:date_end
+                                       ORDER BY exam_projects_workers.dt_begin");
         $oQuery->execute(['need_project' => $project,
                           'date_begin' => $start,
                           'date_end' => $end
@@ -181,18 +187,18 @@ class MainList extends Object {
      */
     public static function findByDatesForWorker($user, $start, $end) {
         $oQuery = Object::$db->prepare('SELECT exam_workers.worker_lastname, exam_workers.worker_id, 
-                                                           exam_projects.project_name, exam_projects.project_id, 
-                                                           exam_roles.role_name, exam_roles.role_id, 
-                                                           exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
-                                                           exam_projects_workers.ep_id
-                                                    FROM `exam_projects_workers` 
-                                                    JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
-                                                    JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
-                                                    JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
-                                                    WHERE exam_projects_workers.worker_id=:need_user 
-                                                    AND exam_projects_workers.dt_begin >=:date_begin 
-                                                    AND exam_projects_workers.dt_end <=:date_end
-                                                    ORDER BY exam_projects_workers.dt_begin');
+                                               exam_projects.project_name, exam_projects.project_id, 
+                                               exam_roles.role_name, exam_roles.role_id, 
+                                               exam_projects_workers.dt_begin, exam_projects_workers.dt_end, 
+                                               exam_projects_workers.ep_id
+                                        FROM `exam_projects_workers` 
+                                        JOIN exam_workers ON exam_projects_workers.worker_id = exam_workers.worker_id 
+                                        JOIN exam_projects ON exam_projects.project_id = exam_projects_workers.project_id 
+                                        JOIN exam_roles ON exam_roles.role_id = exam_projects_workers.role_id 
+                                        WHERE exam_projects_workers.worker_id=:need_user 
+                                        AND exam_projects_workers.dt_begin >=:date_begin 
+                                        AND exam_projects_workers.dt_end <=:date_end
+                                        ORDER BY exam_projects_workers.dt_begin');
         $oQuery->execute(['need_user' => $user,
                           'date_begin' => $start,
                           'date_end' => $end
